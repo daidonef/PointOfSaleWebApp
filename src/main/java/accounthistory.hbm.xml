@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.daidonef.pointofsale.AccountHistory" table="accounthistory">
+	<id name="historyID" column="historyid" type="int">
+		<generator class="increment"></generator>
+	</id>
+	<property name="accountID" column="accountid" type="int"></property>
+	<property name="product" column="product" type="String"></property>
+	<property name="price" column="price" type="double"></property>
+	<property name="paymentType" column="paymentType" type="int"></property>
+	
+</class>
+</hibernate-mapping>
