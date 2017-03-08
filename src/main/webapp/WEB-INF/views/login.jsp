@@ -9,6 +9,8 @@
 <body>
 <h1>Login</h1>
 
+<p>${wrongLogin}</p>
+
 <p>
 	<form name="searchCustomer" action="searchcustomer" method="post">
 

@@ -3,6 +3,7 @@ package com.daidonef.pointofsale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +31,24 @@ public class HomeController {
 		return "login";
 	}
 	
+	//Make sure to check if password is working once able to input user and password.
 	@RequestMapping(value = "/searchcustomer", method = RequestMethod.POST)
-	public String searchCustomer(Model model) {
+	public String searchCustomer(Model model, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession(true);
+		Employee employee = new Employee();
+		
+		if (session.getAttribute("employee") == null) {
+			
+			if(request.getParameter("userName") == null) {
+				return CheckingInformation.login(model);
+			} else {
+				return GettingInformation.employee(request.getParameter("userName"), 
+						request.getParameter("password"), model, session);
+			}
+		}
 		return "searchcustomer";
+		
 	}
 	
 	@RequestMapping(value = "/addcustomer", method = RequestMethod.POST)
