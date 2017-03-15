@@ -33,5 +33,25 @@ public class CheckingInformation {
 		
 		return "";
 	}
+	
+	public static boolean noCustomerAccount(String userName) {
+		
+		List<Account> accounts = DAOAccount.getAccount(Query.gettingAccount(userName));
+		if (accounts.size() == 0) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean oneCustomerAccount(String userName) {
+		
+		List<Account> accounts = DAOAccount.getAccount(Query.gettingAccount(userName));
+		if (accounts.size() == 1) {
+			return false;
+		}
+		
+		return true;
+	}
 
 }

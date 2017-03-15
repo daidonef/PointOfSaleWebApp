@@ -2,6 +2,7 @@ package com.daidonef.pointofsale;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
@@ -15,6 +16,11 @@ public class GettingInformation {
 		List<Employee> employees = DAOEmployee.getEmployee(Query.gettingEmployees(userName));
 		
 		return CheckingInformation.employee(employees, password, model, session);
+	}
+	
+	public static Account account(String userName, HttpServletRequest request) {
+		
+		return DAOAccount.getAccount(Query.gettingAccount(userName)).get(0);
 	}
 
 }

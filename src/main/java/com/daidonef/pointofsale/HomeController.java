@@ -52,19 +52,56 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/addcustomer", method = RequestMethod.POST)
-	public String addCustomer(Model model) {
+	public String addCustomer(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("employee") ==  null) {
+			return "login";
+		}
 		
 		return "addcustomer";
 	}
 	
 	@RequestMapping(value = "/inputproduct", method = RequestMethod.POST)
-	public String inputProduct(Model model) {
+	public String inputProduct(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("employee") ==  null) {
+			return "login";
+		}
+		
+		Account account;
+		
+		if (session.getAttribute("account") == null) {
+		
+			if (request.getParameter("search") == null) {
+				if (CheckingInformation.noCustomerAccount(request.getParameter("userName"))) {
+					return "addcustomer";
+				}
+				account = SavingInformation.newAccount(request);
+				session.setAttribute("account", account);
+			} else {
+				if (CheckingInformation.oneCustomerAccount(request.getParameter("userName"))) {
+					model.addAttribute("notFound", "Customer not found!<br>Please try again!");
+					return "searchCustomer";
+				}
+				account = GettingInformation.account(request.getParameter("userName"), request);
+				session.setAttribute("account", account);
+			}
+		}
+		//To add different products store the information in an ArrayList and put that
+		//ArrayList in a session and then adding it to the ArrayList and adding it to
+		//a Table in the jsp.
+		//Storing it in the database only should happen when they chick total.
+		//Need to clear the ArrayList after it is stored.
 		
 		return "inputproduct";
 	}
 	
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
 	public String payment(Model model) {
+		
+		
 		
 		return "payment";
 	}

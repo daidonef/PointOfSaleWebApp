@@ -12,14 +12,14 @@
 <p>
 	<form name="customerSearch" action="inputproduct" method="post">
 
+		<br> <input type="text" name="search"> <br>
+		
 		<input type="submit" value="Search Customer">
 	</form>
 </p>
 
 <p>
 	<form name="addCustomer" action="addcustomer" method="post">
-
-		<br> <input type="text" name="search"> <br>
 		
 		<input type="submit" value="Add Customer">
 	</form>

@@ -12,8 +12,8 @@
 <p>
 	<form name="inputProducts" action="inputproduct" method="post">
 
-		<br>Username: <input type="text" name="productNumber"> 
-		Password: <input type="text" name="Quantity"> <br>
+		<br>ProductNumber <input type="text" name="productNumber"> 
+		Quantity: <input type="text" name="Quantity"> <br>
 		
 		<input type="submit" value="Add Product">
 	</form>
