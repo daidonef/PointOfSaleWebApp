@@ -24,5 +24,7 @@
 		<input type="submit" value="Add Customer">
 	</form>
 </p>
+
+<p>${owner}</p>
 </body>
 </html>

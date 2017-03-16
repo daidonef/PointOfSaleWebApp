@@ -31,12 +31,10 @@ public class HomeController {
 		return "login";
 	}
 	
-	//Make sure to check if password is working once able to input user and password.
 	@RequestMapping(value = "/searchcustomer", method = RequestMethod.POST)
 	public String searchCustomer(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(true);
-		Employee employee = new Employee();
 		
 		if (session.getAttribute("employee") == null) {
 			
@@ -47,6 +45,12 @@ public class HomeController {
 						request.getParameter("password"), model, session);
 			}
 		}
+		
+		Employee employee = (Employee)session.getAttribute("employee");
+		if (employee.getUserName().equals("Admin")) {
+			model.addAttribute("owner", GettingInformation.toOwnerPage());
+		}
+		
 		return "searchcustomer";
 		
 	}
@@ -79,6 +83,7 @@ public class HomeController {
 					return "addcustomer";
 				}
 				account = SavingInformation.newAccount(request);
+				DAOAccount.addAccount(account);
 				session.setAttribute("account", account);
 			} else {
 				if (CheckingInformation.oneCustomerAccount(request.getParameter("userName"))) {
@@ -110,6 +115,27 @@ public class HomeController {
 	public String receipt(Model model) {
 		
 		return "receipt";
+	}
+	
+	//Add way for owner to update and delete employees.
+	@RequestMapping(value = "/ownerpage", method = RequestMethod.POST)
+	public String ownerPage(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(true);
+		
+		if (request.getParameter("userName") != null) {
+			if (CheckingInformation.noEmployee(request.getParameter("userName"))) {
+				model.addAttribute("employed", "User Name for New Employee already exist!<br>"
+						+ "Please try another User Name!");
+				return "ownerpage";
+			}
+			Employee employee = SavingInformation.newEmployee(request);
+			DAOEmployee.addEmployee(employee);
+			
+			model.addAttribute("employee", employee);
+		}
+		
+		return "ownerpage";
 	}
 	
 }

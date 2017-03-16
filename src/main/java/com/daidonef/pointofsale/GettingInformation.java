@@ -22,5 +22,10 @@ public class GettingInformation {
 		
 		return DAOAccount.getAccount(Query.gettingAccount(userName)).get(0);
 	}
+	
+	public static String toOwnerPage() {
+		return "<form name='ownerPage' action='ownerpage' method='post'>"
+				+ "<br><input type='submit' value='OwnerPage'></form>";
+	}
 
 }

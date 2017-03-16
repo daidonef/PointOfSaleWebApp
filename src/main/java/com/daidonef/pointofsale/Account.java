@@ -7,7 +7,7 @@ public class Account {
 	private String firstName;
 	private String lastName;
 	private String password;
-	private int phoneNumber;
+	private long phoneNumber;
 	private String email;
 	
 	public Account() {
@@ -15,7 +15,7 @@ public class Account {
 	}
 	
 	public Account(String userName, String firstName, String lastName, String password, 
-			int phoneNumber, String email) {
+			long phoneNumber, String email) {
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,7 +46,7 @@ public class Account {
 		return password;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -74,7 +74,7 @@ public class Account {
 		this.password = password;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

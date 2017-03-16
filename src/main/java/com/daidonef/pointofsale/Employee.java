@@ -7,12 +7,25 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String password;
-	private int phoneNumber;
+	private long phoneNumber;
 	private String email;
 	
 	public Employee() {
 		
 	}
+	
+	public Employee(String userName, String firstName, String lastName, String password, long phoneNumber,
+			String email) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
+
+
 
 	public int getID() {
 		return ID;
@@ -34,7 +47,7 @@ public class Employee {
 		return password;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -62,7 +75,7 @@ public class Employee {
 		this.password = password;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

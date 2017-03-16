@@ -27,11 +27,14 @@ public class CheckingInformation {
 		
 		if (passwordEncryptor.checkPassword(password, employee.getPassword())) {
 			session.setAttribute("employee", employee);
+			
+			if (employee.getUserName().equals("Admin")) {
+				model.addAttribute("owner", GettingInformation.toOwnerPage());
+			}
 			return "searchcustomer";
 		}
 		
-		
-		return "";
+		return login(model);
 	}
 	
 	public static boolean noCustomerAccount(String userName) {
@@ -48,6 +51,16 @@ public class CheckingInformation {
 		
 		List<Account> accounts = DAOAccount.getAccount(Query.gettingAccount(userName));
 		if (accounts.size() == 1) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean noEmployee(String userName) {
+		
+		List<Employee> employees = DAOEmployee.getEmployee(Query.gettingEmployees(userName));
+		if (employees.size() == 0) {
 			return false;
 		}
 		
