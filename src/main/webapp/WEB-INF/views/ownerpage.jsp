@@ -12,7 +12,7 @@
 <p>${employed }</p>
 
 <p>
-	<form name="login" action="ownerpage" method="post">
+	<form name="login" onsubmit="return validation()" action="ownerpage" method="post">
 
 		<br>Username: <input type="text" class="inside" name="userName"> 
 		<br>First Name: <input type="text" class="inside" name="firstName"> 

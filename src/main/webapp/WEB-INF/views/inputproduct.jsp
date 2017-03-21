@@ -13,10 +13,29 @@
 	<form name="inputProducts" action="inputproduct" method="post">
 
 		<br>ProductNumber <input type="text" name="productNumber"> 
-		Quantity: <input type="text" name="Quantity"> <br>
+		Quantity: <input type="text" name="quantity"> <br>
 		
 		<input type="submit" value="Add Product">
 	</form>
+</p>
+
+<p>
+	<table align="center">
+		<tr>
+			<th>Product</th>
+			<th>Price</th>
+			<th>Quantity</th>
+		</tr>
+		<c:forEach items="${product }" var="product">
+		<c:forEach items="${quantity }" var="quantity">
+			<tr>
+				<td>${product.name }</td>
+				<td>${product.price }</td>
+				<td>${quantity }</td>
+			</tr>
+		</c:forEach>
+		</c:forEach>
+	</table>
 </p>
 
 <p>

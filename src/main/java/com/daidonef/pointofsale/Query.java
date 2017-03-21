@@ -11,5 +11,9 @@ public class Query {
 	public static String gettingAccount(String un){
 		return "FROM Account WHERE (username = '" + un + "')";
 	}
+	
+	public static String gettingProduct(int productID){
+		return "FROM Product WHERE (productid = '" + productID + "')";
+	}
 
 }

@@ -94,11 +94,10 @@ public class HomeController {
 				session.setAttribute("account", account);
 			}
 		}
-		//To add different products store the information in an ArrayList and put that
-		//ArrayList in a session and then adding it to the ArrayList and adding it to
-		//a Table in the jsp.
-		//Storing it in the database only should happen when they chick total.
-		//Need to clear the ArrayList after it is stored.
+		
+		if (request.getParameter("productNumber") != null) {
+			SavingInformation.addProduct(model, request, session);
+		}
 		
 		return "inputproduct";
 	}

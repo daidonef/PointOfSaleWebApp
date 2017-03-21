@@ -27,5 +27,17 @@ public class GettingInformation {
 		return "<form name='ownerPage' action='ownerpage' method='post'>"
 				+ "<br><input type='submit' value='OwnerPage'></form>";
 	}
+	
+	public static Product product(int productID) {
+		
+		List<Product> products = DAOProduct.getProduct(Query.gettingProduct(productID));
+		if (products.size() == 0){
+			//Add to model about it not being the right product number.
+			Product product = null;
+			return product;
+		}
+		
+		return products.get(0);
+	}
 
 }
