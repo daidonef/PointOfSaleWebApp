@@ -8,17 +8,18 @@
 </head>
 <body>
 <h1>Input Products</h1>
-
+<p>
+${wrongProduct }
+</p>
 <p>
 	<form name="inputProducts" action="inputproduct" method="post">
 
-		<br>ProductNumber <input type="text" name="productNumber"> 
+		<br>Product Name: <input type="text" name="productName"> 
 		Quantity: <input type="text" name="quantity"> <br>
 		
 		<input type="submit" value="Add Product">
 	</form>
 </p>
-
 <p>
 	<table align="center">
 		<tr>

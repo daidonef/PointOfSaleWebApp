@@ -66,5 +66,15 @@ public class CheckingInformation {
 		
 		return true;
 	}
+	
+	public static boolean oneProduct(int productNumber) {
+		
+		List<Product> products = DAOProduct.getProduct(Query.gettingProduct(productNumber));
+		if (products.size() == 0) {
+			return true;
+		}
+		
+		return false;
+	}
 
 }

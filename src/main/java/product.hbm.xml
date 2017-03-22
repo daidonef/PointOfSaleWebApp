@@ -7,10 +7,10 @@
 	<id name="productID" column="productid" type="int">
 		<generator class="increment"></generator>
 	</id>
-	<property name="name" column="name" type="String"></property>
+	<property name="productName" column="productname" type="string"></property>
 	<property name="price" column="price" type="double"></property>
-	<property name="type" column="type" type="String"></property>
-	<property name="description" column="description" type="String"></property>
+	<property name="type" column="type" type="string"></property>
+	<property name="description" column="description" type="string"></property>
 	
 </class>
 </hibernate-mapping>

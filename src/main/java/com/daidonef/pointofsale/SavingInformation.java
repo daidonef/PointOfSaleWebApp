@@ -48,10 +48,8 @@ public class SavingInformation {
 			quantity = null;
 		}
 		
-		
-		
-		products.add(GettingInformation.product(Integer.parseInt(
-				request.getParameter("product"))));
+		products.add(GettingInformation.product(Integer.parseInt(request.getParameter(
+				"productNumber"))));
 		quantity.add(Integer.parseInt(request.getParameter("quantity")));
 		
 		session.setAttribute("product", products);

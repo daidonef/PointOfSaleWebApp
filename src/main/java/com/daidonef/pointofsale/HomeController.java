@@ -77,7 +77,7 @@ public class HomeController {
 		Account account;
 		
 		if (session.getAttribute("account") == null) {
-		
+			//Need to work on the searching for customer.
 			if (request.getParameter("search") == null) {
 				if (CheckingInformation.noCustomerAccount(request.getParameter("userName"))) {
 					return "addcustomer";
@@ -94,8 +94,13 @@ public class HomeController {
 				session.setAttribute("account", account);
 			}
 		}
-		
-		if (request.getParameter("productNumber") != null) {
+		//Need to add products to database and add a way for the owner to add products
+		if (request.getParameter("productName") != null) {
+			if (CheckingInformation.oneProduct(Integer.parseInt(request.getParameter(
+					"productName")))){
+				model.addAttribute("wrongProduct", "You entered the wrong product.");
+				return "inputproduct";
+			}
 			SavingInformation.addProduct(model, request, session);
 		}
 		

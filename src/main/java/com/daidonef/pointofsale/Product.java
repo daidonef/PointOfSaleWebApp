@@ -3,7 +3,7 @@ package com.daidonef.pointofsale;
 public class Product {
 	
 	private int productID;
-	private String name;
+	private String productName;
 	private double price;
 	private String type;
 	private String description;
@@ -16,8 +16,8 @@ public class Product {
 		return productID;
 	}
 
-	public String getName() {
-		return name;
+	public String getProductName() {
+		return productName;
 	}
 
 	public double getPrice() {
@@ -36,8 +36,8 @@ public class Product {
 		this.productID = productID;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public void setPrice(double price) {
