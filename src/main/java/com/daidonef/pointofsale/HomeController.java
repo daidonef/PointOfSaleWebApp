@@ -35,6 +35,7 @@ public class HomeController {
 	public String searchCustomer(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(true);
+		session.setAttribute("account", null);
 		
 		if (session.getAttribute("employee") == null) {
 			
@@ -77,7 +78,6 @@ public class HomeController {
 		Account account;
 		
 		if (session.getAttribute("account") == null) {
-			//Need to work on the searching for customer.
 			if (request.getParameter("search") == null) {
 				if (CheckingInformation.noCustomerAccount(request.getParameter("userName"))) {
 					return "addcustomer";
@@ -86,11 +86,11 @@ public class HomeController {
 				DAOAccount.addAccount(account);
 				session.setAttribute("account", account);
 			} else {
-				if (CheckingInformation.oneCustomerAccount(request.getParameter("userName"))) {
+				if (CheckingInformation.oneCustomerAccount(request.getParameter("search"))) {
 					model.addAttribute("notFound", "Customer not found!<br>Please try again!");
-					return "searchCustomer";
+					return "searchcustomer";
 				}
-				account = GettingInformation.account(request.getParameter("userName"), request);
+				account = GettingInformation.account(request.getParameter("search"), request);
 				session.setAttribute("account", account);
 			}
 		}
@@ -126,6 +126,16 @@ public class HomeController {
 	public String ownerPage(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(true);
+		
+		if (request.getParameter("productName") != null) {
+			if (CheckingInformation.oneProduct(request.getParameter("productName"))) {
+				model.addAttribute("productExist", "Product is already in the system!");
+				return "ownerpage";
+			}
+			model.addAttribute("addedProduct", SavingInformation.addProductToData(request)
+					.getProductName());
+			return "ownerpage";
+		}
 		
 		if (request.getParameter("userName") != null) {
 			if (CheckingInformation.noEmployee(request.getParameter("userName"))) {

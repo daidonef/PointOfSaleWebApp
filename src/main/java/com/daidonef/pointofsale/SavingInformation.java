@@ -57,5 +57,16 @@ public class SavingInformation {
 		model.addAttribute("product", products);
 		model.addAttribute("quantity", quantity);
 	}
+	
+	public static Product addProductToData(HttpServletRequest request) {
+		
+		Product product = new Product(request.getParameter("productName"), 
+				Double.parseDouble(request.getParameter("price")), request.getParameter("type"),
+				request.getParameter("description"));
+		
+		DAOProduct.addProduct(product);
+		
+		return product;
+	}
 
 }

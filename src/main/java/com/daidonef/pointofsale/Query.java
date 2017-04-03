@@ -15,5 +15,9 @@ public class Query {
 	public static String gettingProduct(int productNumber){
 		return "FROM Product WHERE (productid = " + productNumber + ")";
 	}
+	
+	public static String gettingProductByName(String productName){
+		return "FROM Product WHERE (productname = '" + productName + "')";
+	}
 
 }

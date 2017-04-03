@@ -10,6 +10,9 @@
 <h1>Customer Search</h1>
 
 <p>
+	${notFound }
+</p>
+<p>
 	<form name="customerSearch" action="inputproduct" method="post">
 
 		<br> <input type="text" name="search"> <br>

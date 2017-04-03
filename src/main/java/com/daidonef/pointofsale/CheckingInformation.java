@@ -50,11 +50,11 @@ public class CheckingInformation {
 	public static boolean oneCustomerAccount(String userName) {
 		
 		List<Account> accounts = DAOAccount.getAccount(Query.gettingAccount(userName));
-		if (accounts.size() == 1) {
-			return false;
+		if (accounts.size() == 0) {
+			return true;
 		}
 		
-		return true;
+		return false;
 	}
 	
 	public static boolean noEmployee(String userName) {
@@ -75,6 +75,16 @@ public class CheckingInformation {
 		}
 		
 		return false;
+	}
+	
+	public static boolean oneProduct(String productName) {
+		
+		List<Product> products = DAOProduct.getProduct(Query.gettingProductByName(productName));
+		if (products.size() == 0) {
+			return false;
+		}
+		
+		return true;
 	}
 
 }

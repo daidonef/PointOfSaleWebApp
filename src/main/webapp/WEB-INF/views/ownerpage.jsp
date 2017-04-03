@@ -11,8 +11,23 @@
 
 <p>${employed }</p>
 
+<p>${productExist }</p>
+<p>${productAdded}</p>
+
 <p>
-	<form name="login" onsubmit="return validation()" action="ownerpage" method="post">
+	<form name="addProduct" action="ownerpage" method="post">
+	
+		<br>Product Name: <input type="text" name="productName">
+		<br>Price: <input type="text" name="price">
+		<br>Type: <input type="text" name="type">
+		<br>Description <input type="text" name="description">
+	
+		<input type="submit" value="Add Product">
+	</form>
+</p>
+
+<p>
+	<form name="addEmployee" onsubmit="return validation()" action="ownerpage" method="post">
 
 		<br>Username: <input type="text" class="inside" name="userName"> 
 		<br>First Name: <input type="text" class="inside" name="firstName"> 
@@ -30,10 +45,10 @@
 //Need to add Phone Number and Email to validation.
 		function validation() {
 
-			var userName = document.forms["createAccount"]["userName"].value;
-			var firstName = document.forms["createAccount"]["firstName"].value;
-			var lastName = document.forms["createAccount"]["lastName"].value;
-			var password = document.forms["createAccount"]["password"].value;
+			var userName = document.forms["addEmployee"]["userName"].value;
+			var firstName = document.forms["addEmployee"]["firstName"].value;
+			var lastName = document.forms["addEmployee"]["lastName"].value;
+			var password = document.forms["addEmployee"]["password"].value;
 
 			var letters = /^[A-Za-z\s]+$/;
 
