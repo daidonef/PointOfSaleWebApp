@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +15,7 @@ ${wrongProduct }
 <p>
 	<form name="inputProducts" action="inputproduct" method="post">
 
-		<br>Product Name: <input type="text" name="productName"> 
+		<br>Product Number: <input type="text" name="productNumber"> 
 		Quantity: <input type="text" name="quantity"> <br>
 		
 		<input type="submit" value="Add Product">
@@ -27,16 +28,18 @@ ${wrongProduct }
 			<th>Price</th>
 			<th>Quantity</th>
 		</tr>
-		<c:forEach items="${product }" var="product">
-		<c:forEach items="${quantity }" var="quantity">
+		<c:forEach items="${products }" var="product" varStatus="status">
 			<tr>
-				<td>${product.name }</td>
+				<td>${product.productName }</td>
 				<td>${product.price }</td>
-				<td>${quantity }</td>
+				<td>${quantities[status.index]}</td>
 			</tr>
 		</c:forEach>
-		</c:forEach>
 	</table>
+</p>
+
+<p>
+	Total: ${total }
 </p>
 
 <p>

@@ -1,5 +1,6 @@
 package com.daidonef.pointofsale;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,16 @@ public class GettingInformation {
 	public static Product product(int productNumber) {
 		
 		return DAOProduct.getProduct(Query.gettingProduct(productNumber)).get(0);
+	}
+	
+	public static double total (ArrayList<Product> products, ArrayList<Integer> quantity) {
+		
+		double total = 0;
+		for (int i = 0; i < products.size(); i++) {
+			total = total + (products.get(i).getPrice()) * (quantity.get(i));
+		}
+		
+		return total;
 	}
 
 }

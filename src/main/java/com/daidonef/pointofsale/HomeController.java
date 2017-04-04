@@ -9,9 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 	
@@ -94,10 +91,10 @@ public class HomeController {
 				session.setAttribute("account", account);
 			}
 		}
-		//Need to add products to database and add a way for the owner to add products
-		if (request.getParameter("productName") != null) {
+		
+		if (request.getParameter("productNumber") != null) {
 			if (CheckingInformation.oneProduct(Integer.parseInt(request.getParameter(
-					"productName")))){
+					"productNumber")))){
 				model.addAttribute("wrongProduct", "You entered the wrong product.");
 				return "inputproduct";
 			}
@@ -126,6 +123,13 @@ public class HomeController {
 	public String ownerPage(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(true);
+		Employee owner = (Employee) session.getAttribute("employee");
+		
+		if (owner.getUserName().equals("Admin")) {
+			
+		} else {
+			return "home";
+		}
 		
 		if (request.getParameter("productName") != null) {
 			if (CheckingInformation.oneProduct(request.getParameter("productName"))) {

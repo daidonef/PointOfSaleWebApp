@@ -41,21 +41,27 @@ public class SavingInformation {
 		ArrayList<Product> products;
 		ArrayList<Integer> quantity;
 		if (session.getAttribute("product") != null) {
+			//Test to see if the ArrayList can be greater than 10.
 			products = (ArrayList<Product>) session.getAttribute("product");
 			quantity = (ArrayList<Integer>) session.getAttribute("quantity");
+			products.add(GettingInformation.product(Integer.parseInt(request.getParameter(
+					"productNumber"))));
+			quantity.add(Integer.parseInt(request.getParameter("quantity")));
 		} else {
-			products = null;
-			quantity = null;
-		}
-		
-		products.add(GettingInformation.product(Integer.parseInt(request.getParameter(
+			products = new ArrayList<Product>();
+			products.add(GettingInformation.product(Integer.parseInt(request.getParameter(
 				"productNumber"))));
-		quantity.add(Integer.parseInt(request.getParameter("quantity")));
+			quantity = new ArrayList<Integer>();
+			int quan = Integer.parseInt(request.getParameter("quantity"));
+			quantity.add(quan);
+		}
 		
 		session.setAttribute("product", products);
 		session.setAttribute("quantity", quantity);
-		model.addAttribute("product", products);
-		model.addAttribute("quantity", quantity);
+		model.addAttribute("products", products);
+		model.addAttribute("quantities", quantity);
+		session.setAttribute("total", GettingInformation.total(products, quantity));
+		model.addAttribute("total", session.getAttribute("total"));
 	}
 	
 	public static Product addProductToData(HttpServletRequest request) {
