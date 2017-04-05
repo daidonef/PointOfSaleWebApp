@@ -19,5 +19,14 @@ public class Query {
 	public static String gettingProductByName(String productName){
 		return "FROM Product WHERE (productname = '" + productName + "')";
 	}
+	
+	public static String searchingProduct(String productName){
+		return "FROM Product WHERE (productname like '%" + productName + "%')";
+	}
+	
+	public static String searchingEmployee(String employeeName){
+		return "FROM Employee WHERE (firstname like '%" + employeeName 
+				+ "%') or (lastname like '%" + employeeName + "%')";
+	}
 
 }

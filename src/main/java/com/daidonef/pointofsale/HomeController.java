@@ -1,5 +1,7 @@
 package com.daidonef.pointofsale;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -118,7 +120,7 @@ public class HomeController {
 		return "receipt";
 	}
 	
-	//Add way for owner to update and delete employees.
+	//Test update and delete employees and products and write the jsp for update.
 	@RequestMapping(value = "/ownerpage", method = RequestMethod.POST)
 	public String ownerPage(Model model, HttpServletRequest request) {
 		
@@ -141,6 +143,24 @@ public class HomeController {
 			return "ownerpage";
 		}
 		
+		if (request.getParameter("searchProduct") != null) {
+			model.addAttribute("products", DAOProduct.getProduct(Query.searchingProduct(
+					request.getParameter("searchProduct"))));
+		}
+		
+		if (request.getParameter("deleteProduct") != null) {
+			DAOProduct.deleteProduct(Integer.parseInt(request.getParameter("deleteProduct")));
+		}
+		
+		if (request.getParameter("searchEmployee") != null) {
+			model.addAttribute("employees", DAOEmployee.getEmployee(Query.searchingEmployee(
+					request.getParameter("searchEmployee"))));
+		}
+		
+		if (request.getParameter("deleteEmployee") != null) {
+			DAOEmployee.deleteEmployee(Integer.parseInt(request.getParameter("deleteEmployee")));
+		}
+		
 		if (request.getParameter("userName") != null) {
 			if (CheckingInformation.noEmployee(request.getParameter("userName"))) {
 				model.addAttribute("employed", "User Name for New Employee already exist!<br>"
@@ -154,6 +174,18 @@ public class HomeController {
 		}
 		
 		return "ownerpage";
+	}
+	
+	@RequestMapping(value = "/updateprduct", method = RequestMethod.POST)
+	public String updateProduct(Model model, HttpServletRequest request) {
+		
+		return "updateproduct";
+	}
+	
+	@RequestMapping(value = "/updateemployee", method = RequestMethod.POST)
+	public String updateEmployee(Model model, HttpServletRequest request) {
+		
+		return "updateemployee";
 	}
 	
 }
