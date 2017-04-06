@@ -74,5 +74,31 @@ public class SavingInformation {
 		
 		return product;
 	}
+	
+	public static Product updateProduct(HttpServletRequest request) {
+		
+		Product product = new Product(Integer.parseInt(request.getParameter("productID")), 
+				request.getParameter("productNameUp"), Double.parseDouble(request.getParameter("price")), 
+				request.getParameter("type"), request.getParameter("description"));
+		
+		DAOProduct.updateProduct(product);
+		
+		return product;
+	}
+	
+	public static Employee updateEmployee(HttpServletRequest request) {
+		
+		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+		String password = passwordEncryptor.encryptPassword(request.getParameter("password"));
+		
+		Employee employee = new Employee(Integer.parseInt(request.getParameter("employeeID")), 
+				request.getParameter("userName"), request.getParameter("firstName"), 
+				request.getParameter("lastName"), password, Long.parseLong(request.getParameter("phoneNumber")), 
+				request.getParameter("email"));
+		
+		DAOEmployee.updateEmployee(employee);
+		
+		return employee;
+	}
 
 }

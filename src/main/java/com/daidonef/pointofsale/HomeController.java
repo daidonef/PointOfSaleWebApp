@@ -120,7 +120,7 @@ public class HomeController {
 		return "receipt";
 	}
 	
-	//Test update and delete employees and products and write the jsp for update.
+	//Test update and delete employees and products.
 	@RequestMapping(value = "/ownerpage", method = RequestMethod.POST)
 	public String ownerPage(Model model, HttpServletRequest request) {
 		
@@ -148,8 +148,13 @@ public class HomeController {
 					request.getParameter("searchProduct"))));
 		}
 		
+		if (request.getParameter("productID") != null) {
+			model.addAttribute("productUpdated", SavingInformation.updateProduct(request));
+		}
+		
 		if (request.getParameter("deleteProduct") != null) {
-			DAOProduct.deleteProduct(Integer.parseInt(request.getParameter("deleteProduct")));
+			model.addAttribute("productDeleted", DAOProduct.deleteProduct(Integer.parseInt(
+					request.getParameter("deleteProduct"))));
 		}
 		
 		if (request.getParameter("searchEmployee") != null) {
@@ -157,8 +162,13 @@ public class HomeController {
 					request.getParameter("searchEmployee"))));
 		}
 		
+		if (request.getParameter("employeeID") != null) {
+			model.addAttribute("employeeUpdated", SavingInformation.updateEmployee(request));
+		}
+		
 		if (request.getParameter("deleteEmployee") != null) {
-			DAOEmployee.deleteEmployee(Integer.parseInt(request.getParameter("deleteEmployee")));
+			model.addAttribute("employeeDeleted", DAOEmployee.deleteEmployee(Integer.parseInt(
+					request.getParameter("deleteEmployee"))));
 		}
 		
 		if (request.getParameter("userName") != null) {
@@ -179,11 +189,17 @@ public class HomeController {
 	@RequestMapping(value = "/updateprduct", method = RequestMethod.POST)
 	public String updateProduct(Model model, HttpServletRequest request) {
 		
+		model.addAttribute("product", DAOProduct.getProduct(Query.gettingProduct(
+				Integer.parseInt(request.getParameter("updateProduct")))));
+		
 		return "updateproduct";
 	}
 	
 	@RequestMapping(value = "/updateemployee", method = RequestMethod.POST)
 	public String updateEmployee(Model model, HttpServletRequest request) {
+		
+		model.addAttribute("employee", DAOEmployee.getEmployee(Query.gettingEmployeeByNumber(
+				Integer.parseInt(request.getParameter("updateEmployee")))));
 		
 		return "updateemployee";
 	}

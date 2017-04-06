@@ -25,7 +25,16 @@ public class Employee {
 		this.email = email;
 	}
 
-
+	public Employee(int iD, String userName, String firstName, String lastName, String password, long phoneNumber,
+			String email) {
+		ID = iD;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
 
 	public int getID() {
 		return ID;

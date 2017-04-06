@@ -8,5 +8,19 @@
 </head>
 <body>
 <h1>Update Product</h1>
+
+<p>
+	<form name="updateProduct" onsubmit="return validation()" action="ownerpage" method="post">
+	
+		<input type="hidden" name="porductID" class="inside" value="${product.productID}">
+		<br>Product Name: <input type="text" name="productNameUp" class="inside" value="${product.productName}"> 
+		<br>Price: <input type="text" name="price" class="inside" value="${product.price}"> 
+		<br>Type: <input type="text" name="type" class="inside" value="${product.type }"> 
+		<br>Description: <input type="text" name="description" class="inside" value="${product.description }">
+		<br><br>
+		<input type="submit" class="inside" value="Update Product">	
+	</form>
+</p>
+
 </body>
 </html>

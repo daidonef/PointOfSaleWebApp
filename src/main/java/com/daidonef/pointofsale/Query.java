@@ -28,5 +28,9 @@ public class Query {
 		return "FROM Employee WHERE (firstname like '%" + employeeName 
 				+ "%') or (lastname like '%" + employeeName + "%')";
 	}
+	
+	public static String gettingEmployeeByNumber(int employeeNumber){
+		return "FROM Product WHERE (id = " + employeeNumber + ")";
+	}
 
 }

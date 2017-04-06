@@ -11,9 +11,13 @@
 <h1>Owner Page</h1>
 
 <p>${employed }</p>
+<p>${employeeUpdated.userName }</p>
+<p>${employeeDeleted.userName }</p>
 
 <p>${productExist }</p>
 <p>${productAdded}</p>
+<p>${productUpdated.productName }</p>
+<p>${productDeleted.productName }</p>
 
 <p>
 	<form name ="searchProduct" action="ownerpage" method="post">

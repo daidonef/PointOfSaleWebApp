@@ -13,14 +13,19 @@ public class Product {
 	}
 	
 	public Product(String productName, double price, String type, String description) {
-		super();
 		this.productName = productName;
 		this.price = price;
 		this.type = type;
 		this.description = description;
 	}
 
-
+	public Product(int productID, String productName, double price, String type, String description) {
+		this.productID = productID;
+		this.productName = productName;
+		this.price = price;
+		this.type = type;
+		this.description = description;
+	}
 
 	public int getProductID() {
 		return productID;
