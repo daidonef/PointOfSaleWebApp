@@ -11,13 +11,13 @@
 <h1>Owner Page</h1>
 
 <p>${employed }</p>
-<p>${employeeUpdated.userName }</p>
-<p>${employeeDeleted.userName }</p>
+<p>${employeeUpdated.userName }${employeeUpdated2 }</p>
+<p>${employeeDeleted.userName }${employeeDeleted2 }</p>
 
 <p>${productExist }</p>
 <p>${productAdded}</p>
-<p>${productUpdated.productName }</p>
-<p>${productDeleted.productName }</p>
+<p>${productUpdated.productName }${productUpdated2 }</p>
+<p>${productDeleted.productName }${productDeleted2 }</p>
 
 <p>
 	<form name ="searchProduct" action="ownerpage" method="post">
@@ -70,7 +70,7 @@
 <p>
 	<form name ="searchEmployee" action="ownerpage" method="post">
 		
-		<br>Search Product: <input type="text" name="searchEmployee">
+		<br>Search Employee: <input type="text" name="searchEmployee">
 		
 		<input type="submit" value="Search Employee">
 	</form>

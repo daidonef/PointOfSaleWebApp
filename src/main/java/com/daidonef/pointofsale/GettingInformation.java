@@ -43,5 +43,13 @@ public class GettingInformation {
 		
 		return total;
 	}
+	
+	public static Employee employee(HttpServletRequest request) {
+		
+		Employee employee = DAOEmployee.getEmployee(Query.gettingEmployeeByNumber(
+				Integer.parseInt(request.getParameter("updateEmployee")))).get(0);
+		
+		return employee;	
+	}
 
 }

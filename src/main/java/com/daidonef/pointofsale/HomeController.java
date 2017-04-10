@@ -150,11 +150,13 @@ public class HomeController {
 		
 		if (request.getParameter("productID") != null) {
 			model.addAttribute("productUpdated", SavingInformation.updateProduct(request));
+			model.addAttribute("productUpdated2", " Product Updated");
 		}
 		
 		if (request.getParameter("deleteProduct") != null) {
 			model.addAttribute("productDeleted", DAOProduct.deleteProduct(Integer.parseInt(
 					request.getParameter("deleteProduct"))));
+			model.addAttribute("productDeleted2", " Product Deleted");
 		}
 		
 		if (request.getParameter("searchEmployee") != null) {
@@ -164,11 +166,13 @@ public class HomeController {
 		
 		if (request.getParameter("employeeID") != null) {
 			model.addAttribute("employeeUpdated", SavingInformation.updateEmployee(request));
+			model.addAttribute("employeeUpdated2", " Employee Updated");
 		}
 		
 		if (request.getParameter("deleteEmployee") != null) {
 			model.addAttribute("employeeDeleted", DAOEmployee.deleteEmployee(Integer.parseInt(
 					request.getParameter("deleteEmployee"))));
+			model.addAttribute("employeeDeleted2", " Employee Deleted");
 		}
 		
 		if (request.getParameter("userName") != null) {
@@ -186,11 +190,11 @@ public class HomeController {
 		return "ownerpage";
 	}
 	
-	@RequestMapping(value = "/updateprduct", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateproduct", method = RequestMethod.POST)
 	public String updateProduct(Model model, HttpServletRequest request) {
 		
-		model.addAttribute("product", DAOProduct.getProduct(Query.gettingProduct(
-				Integer.parseInt(request.getParameter("updateProduct")))));
+		model.addAttribute("product", GettingInformation.product(Integer.parseInt(
+				request.getParameter("updateProduct"))));
 		
 		return "updateproduct";
 	}
@@ -198,8 +202,7 @@ public class HomeController {
 	@RequestMapping(value = "/updateemployee", method = RequestMethod.POST)
 	public String updateEmployee(Model model, HttpServletRequest request) {
 		
-		model.addAttribute("employee", DAOEmployee.getEmployee(Query.gettingEmployeeByNumber(
-				Integer.parseInt(request.getParameter("updateEmployee")))));
+		model.addAttribute("employee", GettingInformation.employee(request));
 		
 		return "updateemployee";
 	}

@@ -92,7 +92,7 @@ public class SavingInformation {
 		String password = passwordEncryptor.encryptPassword(request.getParameter("password"));
 		
 		Employee employee = new Employee(Integer.parseInt(request.getParameter("employeeID")), 
-				request.getParameter("userName"), request.getParameter("firstName"), 
+				request.getParameter("userNameUp"), request.getParameter("firstName"), 
 				request.getParameter("lastName"), password, Long.parseLong(request.getParameter("phoneNumber")), 
 				request.getParameter("email"));
 		

@@ -30,7 +30,7 @@ public class Query {
 	}
 	
 	public static String gettingEmployeeByNumber(int employeeNumber){
-		return "FROM Product WHERE (id = " + employeeNumber + ")";
+		return "FROM Employee WHERE (id = " + employeeNumber + ")";
 	}
 
 }
