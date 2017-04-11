@@ -9,12 +9,22 @@
 <body>
 <h1>Payment</h1>
 
-<p>
-	<form name="paymentType" action="receipt" method="post">
+<p>Sub Total: ${subTotal }</p>
 
-		<br>Payment Type: <input type="text" name="paymentType"> 
+<p>
+	<form name="paymentType" action="payment" method="post">
+		<br>Payment Type:
+		<br>Cash: <input type="radio" name="paymentType" value="cash">
+		<br>Credit Card: <input type="radio" name="paymentType" value="creditCard">
+		<br>Check: <input type="radio" name="paymentType" value="Check">
 		
 		<input type="submit" value="submit">
+	</form>
+</p>
+
+<p>
+	<form name="paymentInfomation" action="receipt" method="post">
+		${paymentForm }
 	</form>
 </p>
 

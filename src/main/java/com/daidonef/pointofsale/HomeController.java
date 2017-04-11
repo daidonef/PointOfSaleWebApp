@@ -107,20 +107,49 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public String payment(Model model) {
+	public String payment(Model model, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("employee") ==  null) {
+			return "login";
+		}
 		
+		if(session.getAttribute("total") == null) {
+			return "inputproduct";
+		}
+		
+		if (request.getParameter("paymentType") != null) {
+			
+			session.setAttribute("paymentType", request.getParameter("paymentType"));
+			
+			if (request.getParameter("paymentType").equals("cash")) {
+				DisplayingInformation.cashForm(model, request, session);
+			}
+		
+			if (request.getParameter("paymentType").equals("creditCard")) {
+				DisplayingInformation.CreditCardForm(model, request, session);
+			}
+		
+			if (request.getParameter("paymentType").equals("check")) {
+				DisplayingInformation.CheckForm(model, request, session);
+			}
+		}
+		model.addAttribute("subTotal", session.getAttribute("total"));
 		
 		return "payment";
 	}
 	
 	@RequestMapping(value = "/receipt", method = RequestMethod.POST)
-	public String receipt(Model model) {
+	public String receipt(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("employee") ==  null) {
+			return "login";
+		}
 		
 		return "receipt";
 	}
 	
-	//Test update and delete employees and products.
 	@RequestMapping(value = "/ownerpage", method = RequestMethod.POST)
 	public String ownerPage(Model model, HttpServletRequest request) {
 		
