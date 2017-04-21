@@ -4,9 +4,13 @@ public class AccountHistory {
 	
 	private int historyID;
 	private int accountID;
-	private String product;
-	private double price;
-	private int paymentType;
+	private double grandTotal;
+	private String paymentType;
+	private double cashPayment;
+	private double change;
+	private long creditCardNumber;
+	private int securityCode;
+	private int checkNumber;
 	
 	public AccountHistory() {
 		
@@ -20,16 +24,32 @@ public class AccountHistory {
 		return accountID;
 	}
 
-	public String getProduct() {
-		return product;
-	}
-
 	public double getPrice() {
-		return price;
+		return grandTotal;
 	}
 
-	public int getPaymentType() {
+	public String getPaymentType() {
 		return paymentType;
+	}
+	
+	public double getCashPayment() {
+		return cashPayment;
+	}
+	
+	public double getChange() {
+		return change;
+	}
+	
+	public long getCreditCardNumber() {
+		return creditCardNumber;
+	}
+	
+	public int getSecurityCode() {
+		return securityCode;
+	}
+	
+	public int checkNumber() {
+		return checkNumber;
 	}
 
 	public void setHistoryID(int historyID) {
@@ -40,16 +60,32 @@ public class AccountHistory {
 		this.accountID = accountID;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setPrice(double grandTotal) {
+		this.grandTotal = grandTotal;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public void setPaymentType(int paymentType) {
+	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
+	}
+	
+	public void setCashPayment(double cashPayment) {
+		this.cashPayment = cashPayment;
+	}
+	
+	public void setChange(double change) {
+		this.change = change;
+	}
+	
+	public void setCreditCardNumber(long creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
+	}
+	
+	public void setSecurityCode(int securityCode) {
+		this.securityCode = securityCode;
+	}
+	
+	public void setCheckNumber(int checkNumber) {
+		this.checkNumber = checkNumber;
 	}
 
 }
