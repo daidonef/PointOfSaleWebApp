@@ -15,6 +15,33 @@ public class AccountHistory {
 	public AccountHistory() {
 		
 	}
+	
+	public AccountHistory(int accountID, double grandTotal, String paymentType, double cashPayment, double change) {
+		super();
+		this.accountID = accountID;
+		this.grandTotal = grandTotal;
+		this.paymentType = paymentType;
+		this.cashPayment = cashPayment;
+		this.change = change;
+	}
+
+	public AccountHistory(int accountID, double grandTotal, String paymentType, long creditCardNumber,
+			int securityCode) {
+		super();
+		this.accountID = accountID;
+		this.grandTotal = grandTotal;
+		this.paymentType = paymentType;
+		this.creditCardNumber = creditCardNumber;
+		this.securityCode = securityCode;
+	}
+	
+	public AccountHistory(int accountID, double grandTotal, String paymentType, int checkNumber) {
+		super();
+		this.accountID = accountID;
+		this.grandTotal = grandTotal;
+		this.paymentType = paymentType;
+		this.checkNumber = checkNumber;
+	}
 
 	public int getHistoryID() {
 		return historyID;

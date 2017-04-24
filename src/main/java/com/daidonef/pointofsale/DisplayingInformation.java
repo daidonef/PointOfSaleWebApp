@@ -19,14 +19,14 @@ public class DisplayingInformation {
 		model.addAttribute("paymentForm", "<br>Credit Card Number: <input type='text' "
 				+ "name='creditCardNumber'><br>Security Code: <input type='text' name="
 				+ "'securityCode'><br>Expiration Date: <input type='text' name="
-				+ "'expirationDate'><br><input type='submit' value='submit'>");
+				+ "'date'><br><input type='submit' value='submit'>");
 	}
 	
 	public static void CheckForm(Model model, HttpServletRequest request, HttpSession session) {
 		
 		model.addAttribute("paymentForm", "<br>Check Number: <input type='text' name="
 				+ "'checkNumber'><br>Name: <input type='text' name='checkName'><br>Date: "
-				+ "<input type='text' name='checkDate'><br><input type='submit' value='submit'>");
+				+ "<input type='text' name='date'><br><input type='submit' value='submit'>");
 	}
 
 }

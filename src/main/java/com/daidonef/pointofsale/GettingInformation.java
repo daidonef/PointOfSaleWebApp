@@ -1,6 +1,7 @@
 package com.daidonef.pointofsale;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +51,42 @@ public class GettingInformation {
 				Integer.parseInt(request.getParameter("updateEmployee")))).get(0);
 		
 		return employee;	
+	}
+	
+	public static Cash cash(HttpServletRequest request, HttpSession session) {
+		
+		Cash cash = new Cash(Double.parseDouble((String) session.getAttribute("total")), 
+				Double.parseDouble(request.getParameter("customerCash")));
+		
+		return cash;
+	}
+	
+	public static CreditCard creditCard(HttpServletRequest request, HttpSession session) {
+		
+		 CreditCard creditCard = new CreditCard(Double.parseDouble((String)session.getAttribute(
+				 "total")), Long.parseLong(request.getParameter("creditCardNumber")), 
+				 Integer.parseInt(request.getParameter("securityCode")), date(request));
+		
+		return creditCard;
+	}
+	
+	public static Date date(HttpServletRequest request) {
+		
+		String[] brokenDates = request.getParameter("date").split("/");
+		//Date might have a problem, need to test.
+		Date date = new Date(Integer.parseInt(brokenDates[2]), Integer.parseInt(brokenDates[0]),
+				Integer.parseInt(brokenDates[1]));
+		
+		return date;
+	}
+	
+	public static Check check(HttpServletRequest request, HttpSession session) {
+		
+		Check check = new Check(Double.parseDouble((String)session.getAttribute("total")), 
+				Integer.parseInt(request.getParameter("checkNumber")), request.getParameter(
+						"checkName"), date(request));
+		
+		return check;
 	}
 
 }

@@ -8,9 +8,10 @@ public class CreditCard extends Payment{
 	private int securityCode;
 	private Date date;
 	
-	public CreditCard(double subTotal, long creditCardNumber, Date date) {
+	public CreditCard(double subTotal, long creditCardNumber, int securityCode, Date date) {
 		super(subTotal);
 		this.creditCardNumber = creditCardNumber;
+		this.securityCode = securityCode;
 		this.date = date;
 	}
 

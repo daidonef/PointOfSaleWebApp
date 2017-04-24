@@ -146,6 +146,20 @@ public class HomeController {
 		if (session.getAttribute("employee") ==  null) {
 			return "login";
 		}
+		//Need to add to receipt.jsp
+		//Need to test for cash, credit card, and check.
+		if (request.getParameter("customerCash") != null) {
+			model.addAttribute("cash", SavingInformation.paymentCash(request, session));
+		}
+		
+		if (request.getParameter("creditCardNumber") != null) {
+			model.addAttribute("creditCard", SavingInformation.paymentCreditCard(
+					request, session));
+		}
+		
+		if (request.getParameter("checkNumber") != null) {
+			model.addAttribute("check", SavingInformation.paymentCheck(request, session));
+		}
 		
 		return "receipt";
 	}

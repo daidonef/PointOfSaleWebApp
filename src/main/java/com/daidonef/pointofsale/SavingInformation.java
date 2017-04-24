@@ -100,5 +100,45 @@ public class SavingInformation {
 		
 		return employee;
 	}
+	
+	public static Cash paymentCash(HttpServletRequest request, HttpSession session) {
+		
+		Account account = (Account) session.getAttribute("account");
+		Cash cash = GettingInformation.cash(request, session);
+		
+		AccountHistory accountHistory = new AccountHistory(account.getID(), cash.getTotal(),
+				(String)session.getAttribute("paymentType"), cash.getCash(), cash.getChange());
+		
+		DAOAccountHistory.addAccountHistory(accountHistory);
+		
+		return cash;
+	}
+	
+	public static CreditCard paymentCreditCard(HttpServletRequest request, HttpSession session) {
+		
+		Account account = (Account) session.getAttribute("account");
+		CreditCard creditCard = GettingInformation.creditCard(request, session);
+		
+		AccountHistory accountHistory = new AccountHistory(account.getID(), creditCard.getTotal(),
+				(String)session.getAttribute("paymentType"), creditCard.getCreditCardNumber(),
+				creditCard.getSecurityCode());
+		
+		DAOAccountHistory.addAccountHistory(accountHistory);
+		
+		return creditCard;
+	}
+	
+	public static Check paymentCheck(HttpServletRequest request, HttpSession session) {
+		
+		Account account = (Account) session.getAttribute("account");
+		Check check = GettingInformation.check(request, session);
+		
+		AccountHistory accountHistory = new AccountHistory(account.getID(), check.getTotal(),
+				(String)session.getAttribute("paymentType"), check.getCheckNumber());
+		
+		DAOAccountHistory.addAccountHistory(accountHistory);
+		
+		return check;
+	}
 
 }
