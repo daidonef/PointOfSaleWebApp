@@ -10,7 +10,17 @@
 <h1>Customer Receipt</h1>
 
 <p>
-	<form name="nextCustomer" action="searchCustomer" method="post">
+	SubTotal: ${cash.subTotal }${creditCard.subTotal }${check.subTotal }
+	<br>Tax: ${cash.tax }${creditCard.tax }${check.tax }
+	<br>GrandTotal: ${cash.total }${creditCard.total }${check.total }
+	<br>Cash: ${cash.cash }
+	<br>Change: ${cash.change }
+	<br>Security Code: ${creditCard.securityCode }
+	<br>Check Number: ${check.checkNumber }
+</p>
+
+<p>
+	<form name="nextCustomer" action="searchcustomer" method="post">
 
 		<input type="submit" value="nextCustomer">
 	</form>

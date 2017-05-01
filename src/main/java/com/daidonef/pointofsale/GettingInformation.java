@@ -55,7 +55,7 @@ public class GettingInformation {
 	
 	public static Cash cash(HttpServletRequest request, HttpSession session) {
 		
-		Cash cash = new Cash(Double.parseDouble((String) session.getAttribute("total")), 
+		Cash cash = new Cash((Double) session.getAttribute("total"), 
 				Double.parseDouble(request.getParameter("customerCash")));
 		
 		return cash;
@@ -63,8 +63,8 @@ public class GettingInformation {
 	
 	public static CreditCard creditCard(HttpServletRequest request, HttpSession session) {
 		
-		 CreditCard creditCard = new CreditCard(Double.parseDouble((String)session.getAttribute(
-				 "total")), Long.parseLong(request.getParameter("creditCardNumber")), 
+		 CreditCard creditCard = new CreditCard((Double) session.getAttribute(
+				 "total"), Long.parseLong(request.getParameter("creditCardNumber")), 
 				 Integer.parseInt(request.getParameter("securityCode")), date(request));
 		
 		return creditCard;
@@ -82,7 +82,7 @@ public class GettingInformation {
 	
 	public static Check check(HttpServletRequest request, HttpSession session) {
 		
-		Check check = new Check(Double.parseDouble((String)session.getAttribute("total")), 
+		Check check = new Check((Double)session.getAttribute("total"), 
 				Integer.parseInt(request.getParameter("checkNumber")), request.getParameter(
 						"checkName"), date(request));
 		

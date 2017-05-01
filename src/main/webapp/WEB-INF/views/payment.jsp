@@ -16,7 +16,7 @@
 		<br>Payment Type:
 		<br>Cash: <input type="radio" name="paymentType" value="cash">
 		<br>Credit Card: <input type="radio" name="paymentType" value="creditCard">
-		<br>Check: <input type="radio" name="paymentType" value="Check">
+		<br>Check: <input type="radio" name="paymentType" value="check">
 		
 		<input type="submit" value="submit">
 	</form>

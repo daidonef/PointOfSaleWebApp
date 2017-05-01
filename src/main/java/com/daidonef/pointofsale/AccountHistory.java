@@ -17,7 +17,6 @@ public class AccountHistory {
 	}
 	
 	public AccountHistory(int accountID, double grandTotal, String paymentType, double cashPayment, double change) {
-		super();
 		this.accountID = accountID;
 		this.grandTotal = grandTotal;
 		this.paymentType = paymentType;
@@ -27,7 +26,6 @@ public class AccountHistory {
 
 	public AccountHistory(int accountID, double grandTotal, String paymentType, long creditCardNumber,
 			int securityCode) {
-		super();
 		this.accountID = accountID;
 		this.grandTotal = grandTotal;
 		this.paymentType = paymentType;
@@ -36,7 +34,6 @@ public class AccountHistory {
 	}
 	
 	public AccountHistory(int accountID, double grandTotal, String paymentType, int checkNumber) {
-		super();
 		this.accountID = accountID;
 		this.grandTotal = grandTotal;
 		this.paymentType = paymentType;
@@ -51,7 +48,7 @@ public class AccountHistory {
 		return accountID;
 	}
 
-	public double getPrice() {
+	public double getGrandTotal() {
 		return grandTotal;
 	}
 
@@ -75,7 +72,7 @@ public class AccountHistory {
 		return securityCode;
 	}
 	
-	public int checkNumber() {
+	public int getCheckNumber() {
 		return checkNumber;
 	}
 
@@ -87,7 +84,7 @@ public class AccountHistory {
 		this.accountID = accountID;
 	}
 
-	public void setPrice(double grandTotal) {
+	public void setGrandTotal(double grandTotal) {
 		this.grandTotal = grandTotal;
 	}
 

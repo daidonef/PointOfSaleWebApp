@@ -35,6 +35,8 @@ public class HomeController {
 		
 		HttpSession session = request.getSession(true);
 		session.setAttribute("account", null);
+		session.setAttribute("total", null);
+		session.setAttribute("product", null);
 		
 		if (session.getAttribute("employee") == null) {
 			
@@ -83,6 +85,8 @@ public class HomeController {
 				}
 				account = SavingInformation.newAccount(request);
 				DAOAccount.addAccount(account);
+				account = DAOAccount.getAccount(Query.gettingAccount(account.getUserName()))
+						.get(0);
 				session.setAttribute("account", account);
 			} else {
 				if (CheckingInformation.oneCustomerAccount(request.getParameter("search"))) {
