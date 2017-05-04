@@ -32,5 +32,9 @@ public class Query {
 	public static String gettingEmployeeByNumber(int employeeNumber){
 		return "FROM Employee WHERE (id = " + employeeNumber + ")";
 	}
+	
+	public static String gettingAccountHistory(int accountID){
+		return "FROM AccountHistory WHERE (accountid = " + accountID + ")";
+	}
 
 }

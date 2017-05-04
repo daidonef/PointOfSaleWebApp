@@ -88,5 +88,10 @@ public class GettingInformation {
 		
 		return check;
 	}
+	
+	public static List<AccountHistory> accountHistory(HttpSession session) {
+		return DAOAccountHistory.getAccountHistory(Query.gettingAccountHistory(
+				((Account)session.getAttribute("account")).getID()));
+	}
 
 }

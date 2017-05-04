@@ -150,20 +150,26 @@ public class HomeController {
 		if (session.getAttribute("employee") ==  null) {
 			return "login";
 		}
-		//Need to add to receipt.jsp
-		//Need to test for cash, credit card, and check.
+		
 		if (request.getParameter("customerCash") != null) {
 			model.addAttribute("cash", SavingInformation.paymentCash(request, session));
+			model.addAttribute("cashCash", "<br>Cash: ");
+			model.addAttribute("changeCash", "<br>Change: ");
 		}
 		
 		if (request.getParameter("creditCardNumber") != null) {
 			model.addAttribute("creditCard", SavingInformation.paymentCreditCard(
 					request, session));
+			model.addAttribute("creditCardCode", "<br>Security Code: ");
 		}
 		
 		if (request.getParameter("checkNumber") != null) {
 			model.addAttribute("check", SavingInformation.paymentCheck(request, session));
+			model.addAttribute("checkNumber", "<br>Check Number: ");
 		}
+		
+		model.addAttribute("products", session.getAttribute("product"));
+		model.addAttribute("quantities", session.getAttribute("quantity"));
 		
 		return "receipt";
 	}
@@ -240,6 +246,15 @@ public class HomeController {
 	@RequestMapping(value = "/updateproduct", method = RequestMethod.POST)
 	public String updateProduct(Model model, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession(true);
+		Employee owner = (Employee) session.getAttribute("employee");
+		
+		if (owner.getUserName().equals("Admin")) {
+			
+		} else {
+			return "home";
+		}
+		
 		model.addAttribute("product", GettingInformation.product(Integer.parseInt(
 				request.getParameter("updateProduct"))));
 		
@@ -249,9 +264,31 @@ public class HomeController {
 	@RequestMapping(value = "/updateemployee", method = RequestMethod.POST)
 	public String updateEmployee(Model model, HttpServletRequest request) {
 		
+		HttpSession session = request.getSession(true);
+		Employee owner = (Employee) session.getAttribute("employee");
+		
+		if (owner.getUserName().equals("Admin")) {
+			
+		} else {
+			return "home";
+		}
+		
 		model.addAttribute("employee", GettingInformation.employee(request));
 		
 		return "updateemployee";
+	}
+	
+	@RequestMapping(value = "/customerhistory", method = RequestMethod.POST)
+	public String customerHistory(Model model, HttpServletRequest request){
+		
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("employee") ==  null) {
+			return "login";
+		}
+		
+		model.addAttribute("customerHistory", GettingInformation.accountHistory(session));
+		
+		return "customerhistory";
 	}
 	
 }

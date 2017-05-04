@@ -13,6 +13,12 @@
 ${wrongProduct }
 </p>
 <p>
+	<form name="customerHistory" action="customerhistory" method="post">
+	
+		<input type="submit" value="Customer History">
+	</form>
+</p>
+<p>
 	<form name="inputProducts" action="inputproduct" method="post">
 
 		<br>Product Number: <input type="text" name="productNumber"> 
