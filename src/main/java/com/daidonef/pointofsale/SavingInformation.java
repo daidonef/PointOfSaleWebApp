@@ -109,7 +109,7 @@ public class SavingInformation {
 		AccountHistory accountHistory = new AccountHistory(account.getID(), cash.getTotal(),
 				(String)session.getAttribute("paymentType"), cash.getCash(), cash.getChange());
 		
-		DAOAccountHistory.addAccountHistory(accountHistory);
+		saveAccountHistory(accountHistory, session);
 		
 		return cash;
 	}
@@ -123,7 +123,7 @@ public class SavingInformation {
 				(String)session.getAttribute("paymentType"), creditCard.getCreditCardNumber(),
 				creditCard.getSecurityCode());
 		
-		DAOAccountHistory.addAccountHistory(accountHistory);
+		saveAccountHistory(accountHistory, session);
 		
 		return creditCard;
 	}
@@ -136,9 +136,25 @@ public class SavingInformation {
 		AccountHistory accountHistory = new AccountHistory(account.getID(), check.getTotal(),
 				(String)session.getAttribute("paymentType"), check.getCheckNumber());
 		
-		DAOAccountHistory.addAccountHistory(accountHistory);
+		saveAccountHistory(accountHistory, session);
 		
 		return check;
+	}
+	
+	//Stores info for each products customer buys with that account history.
+	public static void saveAccountHistory(AccountHistory accountHistory, HttpSession session) {
+		
+		int historyID = DAOAccountHistory.addAccountHistory(accountHistory);
+		ArrayList<Product> products = (ArrayList<Product>) session.getAttribute("product");
+		ArrayList<Integer> quantities = (ArrayList<Integer>) session.getAttribute("quantity");
+		
+		for(int i=0; i<products.size(); i++) {
+			Product product = products.get(i);
+			AHProducts ahProducts = new AHProducts(historyID, product.getProductID(),
+					product.getProductName(), product.getPrice(), quantities.get(i));
+			DAOAHProducts.addAHProducts(ahProducts);
+		}
+	
 	}
 
 }
