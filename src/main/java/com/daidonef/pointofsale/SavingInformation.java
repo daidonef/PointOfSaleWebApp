@@ -150,7 +150,8 @@ public class SavingInformation {
 		
 		for(int i=0; i<products.size(); i++) {
 			Product product = products.get(i);
-			AHProducts ahProducts = new AHProducts(historyID, product.getProductID(),
+			AHProducts ahProducts = new AHProducts(historyID, 
+					((Account)session.getAttribute("account")).getID(), product.getProductID(), 
 					product.getProductName(), product.getPrice(), quantities.get(i));
 			DAOAHProducts.addAHProducts(ahProducts);
 		}

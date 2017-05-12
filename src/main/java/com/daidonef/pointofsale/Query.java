@@ -36,5 +36,9 @@ public class Query {
 	public static String gettingAccountHistory(int accountID){
 		return "FROM AccountHistory WHERE (accountid = " + accountID + ")";
 	}
+	
+	public static String gettingAHProducts(int accountID){
+		return "FROM AHProducts WHERE (accountid = " + accountID + ")";
+	}
 
 }

@@ -278,6 +278,7 @@ public class HomeController {
 		return "updateemployee";
 	}
 	
+	//The Java and MySQL works but need to make the table cleaner
 	@RequestMapping(value = "/customerhistory", method = RequestMethod.POST)
 	public String customerHistory(Model model, HttpServletRequest request){
 		
@@ -287,6 +288,7 @@ public class HomeController {
 		}
 		
 		model.addAttribute("customerHistory", GettingInformation.accountHistory(session));
+		model.addAttribute("ahProducts", GettingInformation.ahProducts(session));
 		
 		return "customerhistory";
 	}

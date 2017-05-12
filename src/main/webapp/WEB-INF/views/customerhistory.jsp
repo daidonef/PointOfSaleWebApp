@@ -9,9 +9,16 @@
 </head>
 <body>
 <h1>Customer History</h1>
+
+<!-- Need to clean up table so it looks and the double var have two decimal places -->
+
 <p>
 	<table align="center">
 		<tr>
+			<th>Product Number</th>
+			<th>Product Name</th>
+			<th>Product Price</th>
+			<th>Quantity</th>
 			<th>Grand Total</th>
 			<th>Payment Type</th>
 			<th>Cash Payment</th>
@@ -22,6 +29,22 @@
 		</tr>
 		<c:forEach items="${customerHistory }" var="history">
 			<tr>
+				<c:forEach items="${ahProducts }" var="ahProduct">
+					<c:choose>
+						<c:when test="${history.historyID == ahProduct.historyID }">
+						<tr>
+							<td>${ahProduct.productID }</td>
+							<td>${ahProduct.productName }</td>
+							<td>${ahProduct.price }</td>
+							<td>${ahProduct.quantity }</td>
+						</tr>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td>${history.grandTotal }</td>
 				<td>${history.paymentType }</td>
 				<td>${history.cashPayment }</td>

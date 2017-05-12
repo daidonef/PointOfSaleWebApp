@@ -93,5 +93,10 @@ public class GettingInformation {
 		return DAOAccountHistory.getAccountHistory(Query.gettingAccountHistory(
 				((Account)session.getAttribute("account")).getID()));
 	}
+	
+	public static List<AHProducts> ahProducts(HttpSession session) {
+		return DAOAHProducts.getAHProducts(Query.gettingAHProducts(
+				((Account)session.getAttribute("account")).getID()));
+	}
 
 }

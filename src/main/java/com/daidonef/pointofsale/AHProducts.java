@@ -3,6 +3,7 @@ package com.daidonef.pointofsale;
 public class AHProducts {
 	
 	private int ahProductsID;
+	private int accountID;
 	private int historyID;
 	private int productID;
 	private String productName;
@@ -13,9 +14,10 @@ public class AHProducts {
 	
 	}
 
-	public AHProducts(int historyID, int productID, String productName, double price, 
+	public AHProducts(int historyID, int accountID, int productID, String productName, double price, 
 			int quantity) {
 		this.historyID = historyID;
+		this.accountID = accountID;
 		this.productID = productID;
 		this.productName = productName;
 		this.price = price;
@@ -24,6 +26,10 @@ public class AHProducts {
 
 	public int getAhProductsID() {
 		return ahProductsID;
+	}
+	
+	public int getAccountID() {
+		return accountID;
 	}
 
 	public int getHistoryID() {
@@ -48,6 +54,10 @@ public class AHProducts {
 
 	public void setAhProductsID(int ahProductsID) {
 		this.ahProductsID = ahProductsID;
+	}
+	
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
 	}
 
 	public void setHistoryID(int historyID) {

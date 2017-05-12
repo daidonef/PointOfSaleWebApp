@@ -8,6 +8,7 @@
 		<generator class="increment"></generator>
 	</id>
 	<property name="historyID" column="historyid" type="int"></property>
+	<property name="accountID" column="accountid" type="int"></property>
 	<property name="productID" column="productid" type="int"></property>
 	<property name="productName" column="productname" type="string"></property>
 	<property name="price" column="price" type="double"></property>
