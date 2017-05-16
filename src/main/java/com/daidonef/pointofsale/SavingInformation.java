@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 public class SavingInformation {
 	
+	//Puts the variables to create a new Account.
 	public static Account newAccount(HttpServletRequest request) {
 		
 		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
@@ -23,6 +24,7 @@ public class SavingInformation {
 		return account;
 	}
 	
+	//Puts the variables to create a new Employee.
 	public static Employee newEmployee(HttpServletRequest request) {
 		
 		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
@@ -36,10 +38,12 @@ public class SavingInformation {
 		return employee;
 	}
 	
+	//Adds products and the quantity of each that the customer is buying.
 	public static void addProduct(Model model, HttpServletRequest request, HttpSession session) {
 		
 		ArrayList<Product> products;
 		ArrayList<Integer> quantity;
+		//For when there is already a product list started.
 		if (session.getAttribute("product") != null) {
 			//Test to see if the ArrayList can be greater than 10.
 			products = (ArrayList<Product>) session.getAttribute("product");
@@ -47,6 +51,7 @@ public class SavingInformation {
 			products.add(GettingInformation.product(Integer.parseInt(request.getParameter(
 					"productNumber"))));
 			quantity.add(Integer.parseInt(request.getParameter("quantity")));
+		//Starts a new product list only when one is not already started.
 		} else {
 			products = new ArrayList<Product>();
 			products.add(GettingInformation.product(Integer.parseInt(request.getParameter(
@@ -56,6 +61,7 @@ public class SavingInformation {
 			quantity.add(quan);
 		}
 		
+		//Use session to store product and quantity list.
 		session.setAttribute("product", products);
 		session.setAttribute("quantity", quantity);
 		model.addAttribute("products", products);
@@ -64,6 +70,7 @@ public class SavingInformation {
 		model.addAttribute("total", session.getAttribute("total"));
 	}
 	
+	//Adds new product to database.
 	public static Product addProductToData(HttpServletRequest request) {
 		
 		Product product = new Product(request.getParameter("productName"), 
@@ -75,6 +82,7 @@ public class SavingInformation {
 		return product;
 	}
 	
+	//Updates product to database.
 	public static Product updateProduct(HttpServletRequest request) {
 		
 		Product product = new Product(Integer.parseInt(request.getParameter("productID")), 
@@ -86,6 +94,7 @@ public class SavingInformation {
 		return product;
 	}
 	
+	//Updates employee information to database.
 	public static Employee updateEmployee(HttpServletRequest request) {
 		
 		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
@@ -101,6 +110,7 @@ public class SavingInformation {
 		return employee;
 	}
 	
+	//Adds AccountHistory to database for cash payment.
 	public static Cash paymentCash(HttpServletRequest request, HttpSession session) {
 		
 		Account account = (Account) session.getAttribute("account");
@@ -114,6 +124,7 @@ public class SavingInformation {
 		return cash;
 	}
 	
+	//Adds AccountHistory to database for credit card payment.
 	public static CreditCard paymentCreditCard(HttpServletRequest request, HttpSession session) {
 		
 		Account account = (Account) session.getAttribute("account");
@@ -128,6 +139,7 @@ public class SavingInformation {
 		return creditCard;
 	}
 	
+	//Adds AccountHistory to database for check payment.
 	public static Check paymentCheck(HttpServletRequest request, HttpSession session) {
 		
 		Account account = (Account) session.getAttribute("account");

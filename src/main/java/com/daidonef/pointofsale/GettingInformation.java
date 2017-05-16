@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 public class GettingInformation {
 	
+	//Gets the employees by username.
 	public static String employee(String userName, String password,
 			Model model, HttpSession session){
 		
@@ -20,21 +21,25 @@ public class GettingInformation {
 		return CheckingInformation.employee(employees, password, model, session);
 	}
 	
+	//Gets the customer account by username.
 	public static Account account(String userName, HttpServletRequest request) {
 		
 		return DAOAccount.getAccount(Query.gettingAccount(userName)).get(0);
 	}
 	
+	//The page link is for the owner or admin only.
 	public static String toOwnerPage() {
 		return "<form name='ownerPage' action='ownerpage' method='post'>"
 				+ "<br><input type='submit' value='OwnerPage'></form>";
 	}
 	
+	//Gets the product by product number.
 	public static Product product(int productNumber) {
 		
 		return DAOProduct.getProduct(Query.gettingProduct(productNumber)).get(0);
 	}
 	
+	//Gets the sub total for the products the customer is buying.
 	public static double total (ArrayList<Product> products, ArrayList<Integer> quantity) {
 		
 		double total = 0;
@@ -45,6 +50,7 @@ public class GettingInformation {
 		return total;
 	}
 	
+	//Gets employee by employee number.
 	public static Employee employee(HttpServletRequest request) {
 		
 		Employee employee = DAOEmployee.getEmployee(Query.gettingEmployeeByNumber(
@@ -53,6 +59,7 @@ public class GettingInformation {
 		return employee;	
 	}
 	
+	//Creates cash object.
 	public static Cash cash(HttpServletRequest request, HttpSession session) {
 		
 		Cash cash = new Cash((Double) session.getAttribute("total"), 
@@ -61,6 +68,7 @@ public class GettingInformation {
 		return cash;
 	}
 	
+	//Creates CreditCard object.
 	public static CreditCard creditCard(HttpServletRequest request, HttpSession session) {
 		
 		 CreditCard creditCard = new CreditCard((Double) session.getAttribute(
@@ -70,16 +78,17 @@ public class GettingInformation {
 		return creditCard;
 	}
 	
+	//Gets the date from the webpage and formates it into the Date Class.
 	public static Date date(HttpServletRequest request) {
 		
 		String[] brokenDates = request.getParameter("date").split("/");
-		//Date might have a problem, need to test.
 		Date date = new Date(Integer.parseInt(brokenDates[2]), Integer.parseInt(brokenDates[0]),
 				Integer.parseInt(brokenDates[1]));
 		
 		return date;
 	}
 	
+	//Creates Check object.
 	public static Check check(HttpServletRequest request, HttpSession session) {
 		
 		Check check = new Check((Double)session.getAttribute("total"), 
@@ -89,11 +98,13 @@ public class GettingInformation {
 		return check;
 	}
 	
+	//Gets AccountHistory by the accountID.
 	public static List<AccountHistory> accountHistory(HttpSession session) {
 		return DAOAccountHistory.getAccountHistory(Query.gettingAccountHistory(
 				((Account)session.getAttribute("account")).getID()));
 	}
 	
+	//Gets AHProduct (short of Account History Products) by the accountID.
 	public static List<AHProducts> ahProducts(HttpSession session) {
 		return DAOAHProducts.getAHProducts(Query.gettingAHProducts(
 				((Account)session.getAttribute("account")).getID()));

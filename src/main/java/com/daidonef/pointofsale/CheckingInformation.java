@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 public class CheckingInformation {
 	
+	//Shows when employee tries to login with an invalid username or password.
 	public static String login(Model model) {
 		
 		model.addAttribute("wrongLogin", "Username or password is invalid!<br>"
@@ -17,6 +18,7 @@ public class CheckingInformation {
 		return "login";
 	}
 	
+	//Checks if the employee is logging in with correct username and password.
 	public static String employee(List<Employee> employees, 
 			String password, Model model, HttpSession session) {
 		if (employees.size() == 0) {
@@ -37,6 +39,9 @@ public class CheckingInformation {
 		return login(model);
 	}
 	
+	//Return false when there are no customers with that username, and true when there are
+	//one or more customers with that username.
+	//Used to check if username is already in the system or not.
 	public static boolean noCustomerAccount(String userName) {
 		
 		List<Account> accounts = DAOAccount.getAccount(Query.gettingAccount(userName));
@@ -47,6 +52,9 @@ public class CheckingInformation {
 		return true;
 	}
 	
+	//Returns true for when there are no customers with that username, and false when there
+	//are one or more customers with that username.
+	//Used to check if username is already in the system or not.
 	public static boolean oneCustomerAccount(String userName) {
 		
 		List<Account> accounts = DAOAccount.getAccount(Query.gettingAccount(userName));
@@ -57,6 +65,9 @@ public class CheckingInformation {
 		return false;
 	}
 	
+	//Return false when there are no employee with that username, and true when there are
+	//one or more employees with that username.
+	//Used to check if username is already in the system or not.
 	public static boolean noEmployee(String userName) {
 		
 		List<Employee> employees = DAOEmployee.getEmployee(Query.gettingEmployees(userName));
@@ -67,6 +78,9 @@ public class CheckingInformation {
 		return true;
 	}
 	
+	//Returns true for when there are no products with that product number, and false when
+	//there are one or more products with that product number.
+	//Used to check if product number is already in the system or not.
 	public static boolean oneProduct(int productNumber) {
 		
 		List<Product> products = DAOProduct.getProduct(Query.gettingProduct(productNumber));
@@ -77,6 +91,9 @@ public class CheckingInformation {
 		return false;
 	}
 	
+	//Returns false for when there are no products with that product name, and true when
+	//there are one or more products with that product name.
+	//Used to check if product name is already in the system or not.
 	public static boolean oneProduct(String productName) {
 		
 		List<Product> products = DAOProduct.getProduct(Query.gettingProductByName(productName));

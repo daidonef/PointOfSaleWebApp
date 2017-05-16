@@ -34,10 +34,13 @@ public class HomeController {
 	public String searchCustomer(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(true);
+		//Sets these session variables to null for a new customer, but keeps employee
+		//logged in.
 		session.setAttribute("account", null);
 		session.setAttribute("total", null);
 		session.setAttribute("product", null);
 		
+		//Only happens when employee is not already logged in.
 		if (session.getAttribute("employee") == null) {
 			
 			if(request.getParameter("userName") == null) {
@@ -48,8 +51,9 @@ public class HomeController {
 			}
 		}
 		
-		Employee employee = (Employee)session.getAttribute("employee");
-		if (employee.getUserName().equals("Admin")) {
+		//For when the admin is logged in, will allow admin to another page for adding, 
+		//deleting, or changing information within the database.
+		if (((Employee)session.getAttribute("employee")).getUserName().equals("Admin")) {
 			model.addAttribute("owner", GettingInformation.toOwnerPage());
 		}
 		
@@ -78,17 +82,24 @@ public class HomeController {
 		
 		Account account;
 		
+		//Getting the user account.
 		if (session.getAttribute("account") == null) {
+			//For when customers are being added to the database.
 			if (request.getParameter("search") == null) {
+				//Used to see if username inputed by customer is already in the database, and
+				//if so customer will need to pick another username.
 				if (CheckingInformation.noCustomerAccount(request.getParameter("userName"))) {
 					return "addcustomer";
 				}
+				//Adds new customer to the database.
 				account = SavingInformation.newAccount(request);
 				DAOAccount.addAccount(account);
 				account = DAOAccount.getAccount(Query.gettingAccount(account.getUserName()))
 						.get(0);
 				session.setAttribute("account", account);
+			//When searching for a customer already in the database.
 			} else {
+				//For when the customer is not found within the database.
 				if (CheckingInformation.oneCustomerAccount(request.getParameter("search"))) {
 					model.addAttribute("notFound", "Customer not found!<br>Please try again!");
 					return "searchcustomer";
@@ -98,6 +109,7 @@ public class HomeController {
 			}
 		}
 		
+		//Getting the products and quantities stored that the customer wants to buy.
 		if (request.getParameter("productNumber") != null) {
 			if (CheckingInformation.oneProduct(Integer.parseInt(request.getParameter(
 					"productNumber")))){
@@ -180,6 +192,7 @@ public class HomeController {
 		HttpSession session = request.getSession(true);
 		Employee owner = (Employee) session.getAttribute("employee");
 		
+		//For the owner only, can change or add owner username to code.
 		if (owner.getUserName().equals("Admin")) {
 			
 		} else {
