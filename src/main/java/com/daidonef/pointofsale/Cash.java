@@ -26,5 +26,13 @@ public class Cash extends Payment{
 	public void setChange(double change) {
 		this.change = change;
 	}
+	
+	public boolean incorrectAmount() {
+		
+		if (cash < getTotal()) {
+			return true;
+		}
+		return false;
+	}
 
 }

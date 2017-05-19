@@ -38,5 +38,21 @@ public class Check extends Payment{
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	public boolean incorrectCheck(Account account) {
+		if ((account.getFirstName() + "" + account.getLastName()).equals(name)) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean incorrectDate() {
+		Date todayDate = new Date();
+		if (date.getYear() != todayDate.getYear() || date.getMonth() != todayDate.getMonth()
+				|| date.getDate() != todayDate.getDate()) {
+			return true;
+		}
+		return false;
+	}
 
 }

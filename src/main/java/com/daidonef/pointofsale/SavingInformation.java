@@ -45,7 +45,6 @@ public class SavingInformation {
 		ArrayList<Integer> quantity;
 		//For when there is already a product list started.
 		if (session.getAttribute("product") != null) {
-			//Test to see if the ArrayList can be greater than 10.
 			products = (ArrayList<Product>) session.getAttribute("product");
 			quantity = (ArrayList<Integer>) session.getAttribute("quantity");
 			products.add(GettingInformation.product(Integer.parseInt(request.getParameter(

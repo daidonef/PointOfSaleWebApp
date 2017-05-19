@@ -9,6 +9,8 @@
 <body>
 <h1>Payment</h1>
 
+<p>${incorrectPayment }</p>
+
 <p>Sub Total: ${subTotal }</p>
 
 <p>

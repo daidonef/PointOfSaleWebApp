@@ -139,15 +139,15 @@ public class HomeController {
 			session.setAttribute("paymentType", request.getParameter("paymentType"));
 			
 			if (request.getParameter("paymentType").equals("cash")) {
-				DisplayingInformation.cashForm(model, request, session);
+				DisplayingInformation.cashForm(model);
 			}
 		
 			if (request.getParameter("paymentType").equals("creditCard")) {
-				DisplayingInformation.CreditCardForm(model, request, session);
+				DisplayingInformation.creditCardForm(model);
 			}
 		
 			if (request.getParameter("paymentType").equals("check")) {
-				DisplayingInformation.CheckForm(model, request, session);
+				DisplayingInformation.checkForm(model);
 			}
 		}
 		model.addAttribute("subTotal", session.getAttribute("total"));
@@ -164,18 +164,32 @@ public class HomeController {
 		}
 		
 		if (request.getParameter("customerCash") != null) {
+			
+			if (GettingInformation.cash(request, session).incorrectAmount()) {
+				DisplayingInformation.incorrectCashPayment(model);
+				return "payment";
+			}
 			model.addAttribute("cash", SavingInformation.paymentCash(request, session));
 			model.addAttribute("cashCash", "<br>Cash: ");
 			model.addAttribute("changeCash", "<br>Change: ");
 		}
 		
+		//Need to check if the credit card is true and add date to database.
+		//Need to research API for the credit card number.
 		if (request.getParameter("creditCardNumber") != null) {
 			model.addAttribute("creditCard", SavingInformation.paymentCreditCard(
 					request, session));
 			model.addAttribute("creditCardCode", "<br>Security Code: ");
 		}
 		
+		//Add date to database and test if comparing dates works.
 		if (request.getParameter("checkNumber") != null) {
+			if (GettingInformation.check(request, session).incorrectCheck(
+					(Account)session.getAttribute("account")) || GettingInformation.check(
+							request, session).incorrectDate()) {
+				DisplayingInformation.incorrectCheckPayment(model);
+				return "payment";
+			}
 			model.addAttribute("check", SavingInformation.paymentCheck(request, session));
 			model.addAttribute("checkNumber", "<br>Check Number: ");
 		}
