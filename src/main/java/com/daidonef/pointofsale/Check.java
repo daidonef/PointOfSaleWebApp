@@ -40,7 +40,7 @@ public class Check extends Payment{
 	}
 	
 	public boolean incorrectCheck(Account account) {
-		if ((account.getFirstName() + "" + account.getLastName()).equals(name)) {
+		if ((account.getFirstName() + " " + account.getLastName()).equals(name)) {
 			return false;
 		}
 		return true;
@@ -48,11 +48,11 @@ public class Check extends Payment{
 	
 	public boolean incorrectDate() {
 		Date todayDate = new Date();
-		if (date.getYear() != todayDate.getYear() || date.getMonth() != todayDate.getMonth()
-				|| date.getDate() != todayDate.getDate()) {
-			return true;
+		if (date.getYear() == todayDate.getYear() && date.getMonth() == todayDate.getMonth()
+				&& date.getDate() == todayDate.getDate()) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 }

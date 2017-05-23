@@ -130,8 +130,12 @@
 			var firstName = document.forms["addEmployee"]["firstName"].value;
 			var lastName = document.forms["addEmployee"]["lastName"].value;
 			var password = document.forms["addEmployee"]["password"].value;
+			var phoneNumber = document.forms["addEmployee"]["phoneNumber"].value;
+			var email = document.forms["addEmployee"]["email"].value;
 
 			var letters = /^[A-Za-z\s]+$/;
+			var eVal = /\S+@\S+\.\S+/;
+			var pnVal = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
 
 			if (userName.length < 8) {
 				alert("Username is too short! Need at least 8 characters!");

@@ -82,8 +82,8 @@ public class GettingInformation {
 	public static Date date(HttpServletRequest request) {
 		
 		String[] brokenDates = request.getParameter("date").split("/");
-		Date date = new Date(Integer.parseInt(brokenDates[2]), Integer.parseInt(brokenDates[0]),
-				Integer.parseInt(brokenDates[1]));
+		Date date = new Date(Integer.parseInt(brokenDates[2]) - 1900, Integer.parseInt(
+				brokenDates[0]) - 1, Integer.parseInt(brokenDates[1]));
 		
 		return date;
 	}

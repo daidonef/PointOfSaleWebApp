@@ -167,6 +167,7 @@ public class HomeController {
 			
 			if (GettingInformation.cash(request, session).incorrectAmount()) {
 				DisplayingInformation.incorrectCashPayment(model);
+				model.addAttribute("subTotal", session.getAttribute("total"));
 				return "payment";
 			}
 			model.addAttribute("cash", SavingInformation.paymentCash(request, session));
@@ -188,6 +189,7 @@ public class HomeController {
 					(Account)session.getAttribute("account")) || GettingInformation.check(
 							request, session).incorrectDate()) {
 				DisplayingInformation.incorrectCheckPayment(model);
+				model.addAttribute("subTotal", session.getAttribute("total"));
 				return "payment";
 			}
 			model.addAttribute("check", SavingInformation.paymentCheck(request, session));

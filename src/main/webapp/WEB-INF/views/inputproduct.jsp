@@ -19,7 +19,7 @@ ${wrongProduct }
 	</form>
 </p>
 <p>
-	<form name="inputProducts" action="inputproduct" method="post">
+	<form name="inputProducts" onsubmit="return validation()" action="inputproduct" method="post">
 
 		<br>Product Number: <input type="text" name="productNumber"> 
 		Quantity: <input type="text" name="quantity"> <br>
@@ -54,5 +54,24 @@ ${wrongProduct }
 		<input type="submit" value="Total">
 	</form>
 </p>
+
+<script>
+	function validation() {
+		
+		var productNumber = document.forms["inputProducts"]["productNumber"].value;
+		var quantity = document.forms["inputProducts"]["quantity"].value;
+		
+		if (/\D/.test(productNumber)) {
+			alert("Product Number needs to be a number!");
+			return false;
+		}
+		
+		if (/\D/.test(quantity)) {
+			alert("Quantity needs to be a number!");
+			return false;
+		}
+		
+	}
+</script>
 </body>
 </html>

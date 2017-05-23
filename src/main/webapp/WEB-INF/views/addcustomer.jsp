@@ -25,15 +25,20 @@
 </p>
 
 <script>
-//Need to add Phone Number and Email to validation.
+//Make better email validation later.
+//Fit code to deal with phone number that input non numbers like (/ or -)
 		function validation() {
 
-			var userName = document.forms["createAccount"]["userName"].value;
-			var firstName = document.forms["createAccount"]["firstName"].value;
-			var lastName = document.forms["createAccount"]["lastName"].value;
-			var password = document.forms["createAccount"]["password"].value;
+			var userName = document.forms["addCustomer"]["userName"].value;
+			var firstName = document.forms["addCustomer"]["firstName"].value;
+			var lastName = document.forms["addCustomer"]["lastName"].value;
+			var password = document.forms["addCustomer"]["password"].value;
+			var phoneNumber = document.forms["addCustomer"]["phoneNumber"].value;
+			var email = document.forms["addCustomer"]["email"].value;
 
 			var letters = /^[A-Za-z\s]+$/;
+			var eVal = /\S+@\S+\.\S+/;
+			var pnVal = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
 
 			if (userName.length < 8) {
 				alert("Username is too short! Need at least 8 characters!");
@@ -82,6 +87,16 @@
 
 			if (/[!@#$%^&*]/.test(password) === false) {
 				alert("Password needs at least one special character!");
+				return false;
+			}
+			
+			if (pnVal.test(phoneNumber) === false) {
+				alert("Phone number needs to be a full phone number!");
+				return false;
+			}
+			
+			if (eVal.test(email) === false) {
+				alert("Email needs to be a real email!");
 				return false;
 			}
 
