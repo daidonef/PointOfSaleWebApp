@@ -32,28 +32,19 @@
 
 <script>
 
-	//Something is wrong with this validation need to debug it.
-	//I think it has something to do with what a blank input is.
-	//Need to think about the logic and the way javascript compares things.
 	function validation() {
-		
-		var customerCash = null;
-		var creditCardNumber = null;
-		var securityCode = null;
-		var date = null;
-		var checkNumber = null;
-		var checkName = null;
-		
-		customerCash = document.forms["paymentInformation"]["customerCash"].value;
-		creditCardNumber = document.forms["paymentInformation"]["creditCardNumber"].value;
-		securityCode = document.forms["paymentInformation"]["securityCode"].value;
-		date = document.forms["paymentInformation"]["date"].value;
-		checkNumber = document.forms["paymentInformation"]["checkNumber"].value;
-		checkName = document.forms["paymentInformation"]["checkName"].value;
 		
 		var letters = /^[A-Za-z\s]+$/;
 		
-		if (customerCash != null) {
+		if (document.forms["paymentInformation"]["customerCash"] != undefined) {
+			
+			var customerCash = document.forms["paymentInformation"]["customerCash"].value;
+			
+			if (customerCash.length === 0) {
+				alert("Please input number for Customer Cash!");
+				return false;
+			}
+			
 			if (/\D/.test(customerCash)) {
 				alert("Please input number for Customer Cash!");
 				return false;
@@ -61,7 +52,12 @@
 			return true;
 		}
 		
-		if (creditCardNumber != null) {
+		if (document.forms["paymentInformation"]["creditCardNumber"] != undefined) {
+			
+			var creditCardNumber = document.forms["paymentInformation"]["creditCardNumber"].value;
+			var securityCode = document.forms["paymentInformation"]["securityCode"].value;
+			var date = document.forms["paymentInformation"]["date"].value;
+			
 			if (creditCardNumber.length != 16 || /\D/.test(creditCardNumber)) {
 				alert("Credit Card Number needs to be 16 numbers long.");
 				return false;
@@ -70,23 +66,44 @@
 				alert("Security Code needs to be at least 3 numbers long.");
 				return false;
 			}
-			if (/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(date)) {
-				alert("Date must be in xx/xx/xxxx formate");
+			if (date.length != 10) {
+				alert("Date must be in xx/xx/xxxx format.");
+				return false;
+			}
+			if (/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(date) === false) {
+				alert("Date must be in xx/xx/xxxx format.");
 				return false;
 			}
 			return true;
 		}
 		
-		if (checkNumber != null) {
+		if (document.forms["paymentInformation"]["checkNumber"] != undefined) {
+			
+			var date = document.forms["paymentInformation"]["date"].value;
+			var checkNumber = document.forms["paymentInformation"]["checkNumber"].value;
+			var checkName = document.forms["paymentInformation"]["checkName"].value;
+			
+			if (checkNumber.length === 0) {
+				alert("Please input the check number!");
+				return false;
+			}
 			if (/\D/.test(checkNumber)) {
 				alert("Check Number must only be numbers!");
+				return false;
+			}
+			if (checkName.length < 5) {
+				alert("Please input your full name!");
 				return false;
 			}
 			if (letters.test(checkName) === false) {
 				alert("Name can only be letters!");
 				return false;
 			}
-			if (/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(date)) {
+			if (date.length != 10) {
+				alert("Date must be in xx/xx/xxxx format.");
+				return false;
+			}
+			if (/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(date) === false) {
 				alert("Date must be in xx/xx/xxxx formate");
 				return false;
 			}

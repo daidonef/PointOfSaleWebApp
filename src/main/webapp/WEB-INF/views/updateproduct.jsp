@@ -22,5 +22,39 @@
 	</form>
 </p>
 
+<script>
+	function prodValidation() {
+		
+		var productName = document.forms["addProduct"]["productName"].value;
+		var price = document.forms["addProduct"]["price"].value;
+		var type = document.forms["addProduct"]["type"].value;
+		var description = document.forms["addProduct"]["description"].value;
+	
+		var letters = /^[A-Za-z\s]+$/;
+	
+		if (productName.length === 0) {
+			alert("Need to input a product name!");
+			return false;
+		}
+		if (price.length === 0) {
+			alert("Need to input a price!");
+			return false;
+		}
+		if (/^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/.test(price)) {
+			alert("Need to input proper price value!");
+			return false;
+		}
+		if (type.length === 0) {
+			alert("Need to input a type!");
+			return false;
+		}
+		if (description.length === 0) {
+			alert("Need to input a description!");
+			return false;
+		}
+		
+	}
+</script>
+
 </body>
 </html>
