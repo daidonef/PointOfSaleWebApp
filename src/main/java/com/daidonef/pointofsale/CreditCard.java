@@ -38,5 +38,13 @@ public class CreditCard extends Payment{
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	public boolean incorrectDate() {
+		Date todayDate = new Date();
+		if (date.after(todayDate)) {
+			return false;
+		}
+		return true;
+	}
 
 }

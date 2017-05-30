@@ -175,15 +175,19 @@ public class HomeController {
 			model.addAttribute("changeCash", "<br>Change: ");
 		}
 		
-		//Need to check if the credit card is true and add date to database.
-		//Need to research API for the credit card number.
+		//Need to add date to the database.
 		if (request.getParameter("creditCardNumber") != null) {
+			if (GettingInformation.creditCard(request, session).incorrectDate()) {
+				DisplayingInformation.incorrectCreditCardPayment(model);
+				model.addAttribute("subTotal", session.getAttribute("total"));
+				return "payment";
+			}
 			model.addAttribute("creditCard", SavingInformation.paymentCreditCard(
 					request, session));
 			model.addAttribute("creditCardCode", "<br>Security Code: ");
 		}
 		
-		//Add date to database and test if comparing dates works.
+		//Add date to database.
 		if (request.getParameter("checkNumber") != null) {
 			if (GettingInformation.check(request, session).incorrectCheck(
 					(Account)session.getAttribute("account")) || GettingInformation.check(

@@ -1,6 +1,7 @@
 package com.daidonef.pointofsale;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -114,9 +115,11 @@ public class SavingInformation {
 		
 		Account account = (Account) session.getAttribute("account");
 		Cash cash = GettingInformation.cash(request, session);
+		Date todayDate = new Date();
 		
-		AccountHistory accountHistory = new AccountHistory(account.getID(), cash.getTotal(),
-				(String)session.getAttribute("paymentType"), cash.getCash(), cash.getChange());
+		AccountHistory accountHistory = new AccountHistory(account.getID(), todayDate, 
+				cash.getTotal(), (String)session.getAttribute("paymentType"), cash.getCash(), 
+				cash.getChange());
 		
 		saveAccountHistory(accountHistory, session);
 		
@@ -128,9 +131,11 @@ public class SavingInformation {
 		
 		Account account = (Account) session.getAttribute("account");
 		CreditCard creditCard = GettingInformation.creditCard(request, session);
+		Date todayDate = new Date();
 		
-		AccountHistory accountHistory = new AccountHistory(account.getID(), creditCard.getTotal(),
-				(String)session.getAttribute("paymentType"), creditCard.getCreditCardNumber(),
+		AccountHistory accountHistory = new AccountHistory(account.getID(), todayDate, 
+				creditCard.getTotal(), (String)session.getAttribute("paymentType"), 
+				creditCard.getDate(), creditCard.getCreditCardNumber(), 
 				creditCard.getSecurityCode());
 		
 		saveAccountHistory(accountHistory, session);
@@ -143,9 +148,11 @@ public class SavingInformation {
 		
 		Account account = (Account) session.getAttribute("account");
 		Check check = GettingInformation.check(request, session);
+		Date todayDate = new Date();
 		
-		AccountHistory accountHistory = new AccountHistory(account.getID(), check.getTotal(),
-				(String)session.getAttribute("paymentType"), check.getCheckNumber());
+		AccountHistory accountHistory = new AccountHistory(account.getID(), todayDate, 
+				check.getTotal(), (String)session.getAttribute("paymentType"), 
+				check.getCheckNumber());
 		
 		saveAccountHistory(accountHistory, session);
 		

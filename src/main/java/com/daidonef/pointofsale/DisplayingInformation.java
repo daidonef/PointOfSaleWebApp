@@ -33,6 +33,11 @@ public class DisplayingInformation {
 		model.addAttribute("incorrectPayment", "Not enough cash for the payment!");
 	}
 	
+	public static void incorrectCreditCardPayment(Model model) {
+		
+		model.addAttribute("incorrectPayment", "The date of credit card is incorrect!");
+	}
+	
 	public static void incorrectCheckPayment(Model model) {
 		
 		model.addAttribute("incorrectPayment", "Either the name is wrong or the date!");

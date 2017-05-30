@@ -8,10 +8,12 @@
 		<generator class="increment"></generator>
 	</id>
 	<property name="accountID" column="accountid" type="int"></property>
+	<property name="date" column="date" type="date"></property>
 	<property name="grandTotal" column="grandtotal" type="double"></property>
 	<property name="paymentType" column="paymenttype" type="string"></property>
 	<property name="cashPayment" column="cashpayment" type="double"></property>
 	<property name="change" column="customerchange" type="double"></property>
+	<property name="creditDate" column="creditdate" type="date"></property>
 	<property name="creditCardNumber" column="creditcardnumber" type="long"></property>
 	<property name="securityCode" column="securitycode" type="int"></property>
 	<property name="checkNumber" column="checknumber" type="int"></property>

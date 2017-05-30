@@ -19,10 +19,12 @@
 			<th>Product Name</th>
 			<th>Product Price</th>
 			<th>Quantity</th>
+			<th>Date</th>
 			<th>Grand Total</th>
 			<th>Payment Type</th>
 			<th>Cash Payment</th>
 			<th>Change</th>
+			<th>Credit Card Date</th>
 			<th>Credit Card Number</th>
 			<th>Secutity Code</th>
 			<th>Check Number</th>
@@ -45,10 +47,12 @@
 				<td></td>
 				<td></td>
 				<td></td>
+				<td>${history.date }</td>
 				<td>${history.grandTotal }</td>
 				<td>${history.paymentType }</td>
 				<td>${history.cashPayment }</td>
 				<td>${history.change }</td>
+				<td>${history.creditDate }</td>
 				<td>${history.creditCardNumber }</td>
 				<td>${history.securityCode }</td>
 				<td>${history.checkNumber }</td>
