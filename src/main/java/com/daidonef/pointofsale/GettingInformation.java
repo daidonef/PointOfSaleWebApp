@@ -46,6 +46,7 @@ public class GettingInformation {
 		for (int i = 0; i < products.size(); i++) {
 			total = total + (products.get(i).getPrice()) * (quantity.get(i));
 		}
+		total = Math.round(total * 100) / 100.00;
 		
 		return total;
 	}

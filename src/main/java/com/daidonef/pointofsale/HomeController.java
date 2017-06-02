@@ -175,7 +175,6 @@ public class HomeController {
 			model.addAttribute("changeCash", "<br>Change: ");
 		}
 		
-		//Need to add date to the database.
 		if (request.getParameter("creditCardNumber") != null) {
 			if (GettingInformation.creditCard(request, session).incorrectDate()) {
 				DisplayingInformation.incorrectCreditCardPayment(model);
@@ -187,7 +186,6 @@ public class HomeController {
 			model.addAttribute("creditCardCode", "<br>Security Code: ");
 		}
 		
-		//Add date to database.
 		if (request.getParameter("checkNumber") != null) {
 			if (GettingInformation.check(request, session).incorrectCheck(
 					(Account)session.getAttribute("account")) || GettingInformation.check(
@@ -311,7 +309,7 @@ public class HomeController {
 		return "updateemployee";
 	}
 	
-	//The Java and MySQL works but need to make the table cleaner
+	//The Java and MySQL works but need to make the table cleaner.
 	@RequestMapping(value = "/customerhistory", method = RequestMethod.POST)
 	public String customerHistory(Model model, HttpServletRequest request){
 		

@@ -11,6 +11,7 @@ public class Payment {
 		this.subTotal = subTotal;
 		tax = this.subTotal * TAX;
 		total = this.subTotal + tax;
+		twoDecimal();
 	}
 
 	public double getSubTotal() {
@@ -40,5 +41,11 @@ public class Payment {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-
+	
+	public void twoDecimal() {
+		subTotal = Math.round(subTotal * 100) / 100.00;
+		tax =  Math.round(tax * 100) / 100.00;
+		total =  Math.round(total * 100) / 100.00;	
+	}
+	
 }

@@ -9,6 +9,7 @@ public class Cash extends Payment{
 		super(subTotal);
 		this.cash = cash;
 		change = cash - getTotal();
+		change = Math.round(change * 100) / 100.00;
 	}
 
 	public double getCash() {
