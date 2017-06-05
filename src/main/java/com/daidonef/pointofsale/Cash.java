@@ -1,5 +1,8 @@
 package com.daidonef.pointofsale;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Cash extends Payment{
 	
 	private double cash;
@@ -9,7 +12,7 @@ public class Cash extends Payment{
 		super(subTotal);
 		this.cash = cash;
 		change = cash - getTotal();
-		change = Math.round(change * 100) / 100.00;
+		change = BigDecimal.valueOf(change).setScale(2, RoundingMode.HALF_UP).doubleValue();
 	}
 
 	public double getCash() {

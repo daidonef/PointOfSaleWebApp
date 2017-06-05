@@ -1,5 +1,7 @@
 package com.daidonef.pointofsale;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,10 +47,8 @@ public class GettingInformation {
 		double total = 0;
 		for (int i = 0; i < products.size(); i++) {
 			total = total + (products.get(i).getPrice()) * (quantity.get(i));
-		}
-		total = Math.round(total * 100) / 100.00;
-		
-		return total;
+		}	
+		return BigDecimal.valueOf(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
 	}
 	
 	//Gets employee by employee number.

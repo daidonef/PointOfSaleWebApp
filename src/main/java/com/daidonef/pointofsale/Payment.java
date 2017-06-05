@@ -1,5 +1,8 @@
 package com.daidonef.pointofsale;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Payment {
 	
 	private double subTotal;
@@ -43,9 +46,10 @@ public class Payment {
 	}
 	
 	public void twoDecimal() {
-		subTotal = Math.round(subTotal * 100) / 100.00;
-		tax =  Math.round(tax * 100) / 100.00;
-		total =  Math.round(total * 100) / 100.00;	
+		
+		subTotal = BigDecimal.valueOf(subTotal).setScale(2, RoundingMode.HALF_UP).doubleValue();
+		tax =  BigDecimal.valueOf(tax).setScale(2, RoundingMode.HALF_UP).doubleValue();
+		total =  BigDecimal.valueOf(total).setScale(2, RoundingMode.HALF_UP).doubleValue();	
 	}
 	
 }
