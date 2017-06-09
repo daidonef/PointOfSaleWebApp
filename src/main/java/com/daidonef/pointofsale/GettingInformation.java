@@ -101,8 +101,9 @@ public class GettingInformation {
 	
 	//Gets AccountHistory by the accountID.
 	public static List<AccountHistory> accountHistory(HttpSession session) {
-		return DAOAccountHistory.getAccountHistory(Query.gettingAccountHistory(
-				((Account)session.getAttribute("account")).getID()));
+		
+		return DAOAccountHistory.getAccountHistory(Query.gettingAccountHistory(((
+				Account)session.getAttribute("account")).getID()));
 	}
 	
 	//Gets AHProduct (short of Account History Products) by the accountID.

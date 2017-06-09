@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,11 +16,11 @@
 <p>
 	<table align="center">
 		<tr>
+			<th>Date</th>
 			<th>Product Number</th>
 			<th>Product Name</th>
 			<th>Product Price</th>
 			<th>Quantity</th>
-			<th>Date</th>
 			<th>Grand Total</th>
 			<th>Payment Type</th>
 			<th>Cash Payment</th>
@@ -31,13 +32,15 @@
 		</tr>
 		<c:forEach items="${customerHistory }" var="history">
 			<tr>
+				<td>${history.date }</td>
 				<c:forEach items="${ahProducts }" var="ahProduct">
 					<c:choose>
 						<c:when test="${history.historyID == ahProduct.historyID }">
 						<tr>
+							<td></td>
 							<td>${ahProduct.productID }</td>
 							<td>${ahProduct.productName }</td>
-							<td>${ahProduct.price }</td>
+							<td><fmt:formatNumber type="number" minFractionDigits="2" value="${ahProduct.price }"/></td>
 							<td>${ahProduct.quantity }</td>
 						</tr>
 						</c:when>
@@ -47,11 +50,11 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>${history.date }</td>
-				<td>${history.grandTotal }</td>
+				<td></td>
+				<td><fmt:formatNumber type="number" minFractionDigits="2" value="${history.grandTotal }"/></td>
 				<td>${history.paymentType }</td>
-				<td>${history.cashPayment }</td>
-				<td>${history.change }</td>
+				<td><fmt:formatNumber type="number" minFractionDigits="2" value="${history.cashPayment }"/></td>
+				<td><fmt:formatNumber type="number" minFractionDigits="2" value="${history.change }"/></td>
 				<td>${history.creditDate }</td>
 				<td>${history.creditCardNumber }</td>
 				<td>${history.securityCode }</td>
