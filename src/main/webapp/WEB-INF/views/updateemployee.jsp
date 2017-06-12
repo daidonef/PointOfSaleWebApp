@@ -5,11 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Update Employee</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Update Employee</h1>
 
-<p>
+<div>
 	<form name="updateEmployee" onsubmit="return validation()" action="ownerpage" method="post">
 
 		<input type="hidden" name="employeeID" class="inside" value="${employee.ID}">
@@ -21,9 +22,9 @@
 		<br>Email: <input type="text" class="inside" name="email" value="${employee.email }"> 
 		<br><br>
 		
-		<input type="submit" value="Update Employee">
+		<input type="submit" class='inside' value="Update Employee">
 	</form>
-</p>
+</div>
 <script>
 //Need to inprove Phone Number and Email to validation.
 		function validation() {

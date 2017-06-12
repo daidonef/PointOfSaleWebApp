@@ -5,11 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Customer</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Add Customer</h1>
 
-<p>
+<div>
 	<form name="addCustomer" onsubmit="return validation()" action="inputproduct" method="post">
 
 		<br>Username: <input type="text" class="inside" name="userName"> 
@@ -20,9 +21,9 @@
 		<br>Email: <input type="text" class="inside" name="email"> 
 		<br><br>
 		
-		<input type="submit" value="Add Customer">
+		<input type="submit" class="inside" value="Add Customer">
 	</form>
-</p>
+</div>
 
 <script>
 //Make better email validation later.

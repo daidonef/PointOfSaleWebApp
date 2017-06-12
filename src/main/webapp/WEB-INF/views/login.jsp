@@ -5,21 +5,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Login</h1>
 
-<p>${wrongLogin}</p>
+<div2>${wrongLogin}</div2>
 
-<p>
+<div>
 	<form name="searchCustomer" action="searchcustomer" method="post">
 
 		<br>Username: <input type="text" class="inside" name="userName"> 
 		<br>Password: <input type="password" class="inside" name="password"> <br>
 		<br>
 		
-		<input type="submit" value="Login">
+		<input type="submit" class="inside" value="Login">
 	</form>
-</p>
+</div>
 </body>
 </html>

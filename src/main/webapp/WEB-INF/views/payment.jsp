@@ -5,30 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Payment</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Payment</h1>
 
-<p>${incorrectPayment }</p>
+<div2>${incorrectPayment }</div2>
 
-<p>Sub Total: ${subTotal }</p>
+<div>Sub Total: ${subTotal }</div>
 
-<p>
+<div>
 	<form name="paymentType" onsubmit="return payValidation()" action="payment" method="post">
 		<br>Payment Type:
 		<br>Cash: <input type="radio" name="paymentType" value="cash">
 		<br>Credit Card: <input type="radio" name="paymentType" value="creditCard">
 		<br>Check: <input type="radio" name="paymentType" value="check">
 		
-		<input type="submit" value="submit">
+		<input type="submit" class="inside" value="submit">
 	</form>
-</p>
+</div>
 
-<p>
+<div>
 	<form name="paymentInformation" onsubmit="return validation()" action="receipt" method="post">
 		${paymentForm }
 	</form>
-</p>
+</div>
 
 <script>
 

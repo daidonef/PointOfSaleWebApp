@@ -6,27 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Owner Page</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Owner Page</h1>
 
-<p>${employed }</p>
-<p>${employeeUpdated.userName }${employeeUpdated2 }</p>
-<p>${employeeDeleted.userName }${employeeDeleted2 }</p>
+<div2>${employed }</div2>
+<div>${employeeUpdated.userName }${employeeUpdated2 }
+${employeeDeleted.userName }${employeeDeleted2 }</div>
 
-<p>${productExist }</p>
-<p>${productAdded}</p>
-<p>${productUpdated.productName }${productUpdated2 }</p>
-<p>${productDeleted.productName }${productDeleted2 }</p>
+<div2>${productExist }</div2>
+<div>${productAdded}
+${productUpdated.productName }${productUpdated2 }
+${productDeleted.productName }${productDeleted2 }</div>
 
-<p>
+<div>
 	<form name ="searchProduct" action="ownerpage" method="post">
 		
-		<br>Search Product: <input type="text" name="searchProduct">
+		<br>Search Product: <input type="text" class="inside" name="searchProduct">
 		
-		<input type="submit" value="Search Product">
+		<input type="submit" class="inside" value="Search Product">
 	</form>
-</p>
+</div>
 <table>
 	<tr>
 		<th>Product Number</th>
@@ -55,26 +56,26 @@
 	</c:forEach>
 </table>
 
-<p>
+<div>
 	<form name="addProduct" onsubmit="return prodValidation()" action="ownerpage" method="post">
 	
-		<br>Product Name: <input type="text" name="productName">
-		<br>Price: <input type="text" name="price">
-		<br>Type: <input type="text" name="type">
-		<br>Description <input type="text" name="description">
+		<br>Product Name: <input type="text" class='inside' name="productName">
+		<br>Price: <input type="text" class='inside' name="price">
+		<br>Type: <input type="text" class='inside' name="type">
+		<br>Description <input type="text" class='inside' name="description">
 	
-		<input type="submit" value="Add Product">
+		<input type="submit" class='inside' value="Add Product">
 	</form>
-</p>
+</div>
 
-<p>
+<div>
 	<form name ="searchEmployee" action="ownerpage" method="post">
 		
-		<br>Search Employee: <input type="text" name="searchEmployee">
+		<br>Search Employee: <input type="text" class='inside' name="searchEmployee">
 		
-		<input type="submit" value="Search Employee">
+		<input type="submit" class='inside' value="Search Employee">
 	</form>
-</p>
+</div>
 
 <table>
 	<tr>
@@ -107,7 +108,7 @@
 </table>
 
 
-<p>
+<div>
 	<form name="addEmployee" onsubmit="return validation()" action="ownerpage" method="post">
 
 		<br>Username: <input type="text" class="inside" name="userName"> 
@@ -118,9 +119,9 @@
 		<br>Email: <input type="text" class="inside" name="email"> 
 		<br><br>
 		
-		<input type="submit" value="Add Employee">
+		<input type="submit" class='inside' value="Add Employee">
 	</form>
-</p>
+</div>
 
 <script>
 

@@ -6,11 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Customer Receipt</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Customer Receipt</h1>
 
-<p>
 	<table align="center">
 		<tr>
 			<th>Product</th>
@@ -25,9 +25,8 @@
 			</tr>
 		</c:forEach>
 	</table>
-</p>
 
-<p>
+<div>
 	SubTotal: ${cash.subTotal }${creditCard.subTotal }${check.subTotal }
 	<br>Tax: ${cash.tax }${creditCard.tax }${check.tax }
 	<br>GrandTotal: ${cash.total }${creditCard.total }${check.total }
@@ -35,13 +34,13 @@
 	${changeCash }${cash.change }
 	${creditCardCode }${creditCard.securityCode }
 	${checkNumber }${check.checkNumber }
-</p>
+</div>
 
-<p>
+<div>
 	<form name="nextCustomer" action="searchcustomer" method="post">
 
-		<input type="submit" value="nextCustomer">
+		<input type="submit" class="inside" value="nextCustomer">
 	</form>
-</p>
+</div>
 </body>
 </html>

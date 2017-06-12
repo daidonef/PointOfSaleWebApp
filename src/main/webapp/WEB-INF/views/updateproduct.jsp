@@ -5,11 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Update Product</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Update Product</h1>
 
-<p>
+<div>
 	<form name="updateProduct" onsubmit="return validation()" action="ownerpage" method="post">
 	
 		<input type="hidden" name="porductID" class="inside" value="${product.productID}">
@@ -20,7 +21,7 @@
 		<br><br>
 		<input type="submit" class="inside" value="Update Product">	
 	</form>
-</p>
+</div>
 
 <script>
 	function prodValidation() {

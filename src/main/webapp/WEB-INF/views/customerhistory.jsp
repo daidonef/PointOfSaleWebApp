@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Customer History</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Customer History</h1>
@@ -33,6 +34,10 @@
 		<c:forEach items="${customerHistory }" var="history">
 			<tr>
 				<td>${history.date }</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<c:forEach items="${ahProducts }" var="ahProduct">
 					<c:choose>
 						<c:when test="${history.historyID == ahProduct.historyID }">

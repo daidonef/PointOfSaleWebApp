@@ -32,7 +32,7 @@ public class GettingInformation {
 	//The page link is for the owner or admin only.
 	public static String toOwnerPage() {
 		return "<form name='ownerPage' action='ownerpage' method='post'>"
-				+ "<br><input type='submit' value='OwnerPage'></form>";
+				+ "<br><input type='submit' class='inside' value='OwnerPage'></form>";
 	}
 	
 	//Gets the product by product number.

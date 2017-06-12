@@ -5,29 +5,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Customer Search</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Customer Search</h1>
 
-<p>
+<div2>
 	${notFound }
-</p>
-<p>
+</div2>
+<div>
 	<form name="customerSearch" action="inputproduct" method="post">
 
-		<br> <input type="text" name="search"> <br>
+		<br> <input type="text" class="inside" name="search"> <br>
 		
-		<input type="submit" value="Search Customer">
+		<input type="submit" class="inside" value="Search Customer">
 	</form>
-</p>
+</div>
 
-<p>
+<div>
 	<form name="addCustomer" action="addcustomer" method="post">
 		
-		<input type="submit" value="Add Customer">
+		<input type="submit" class="inside" value="Add Customer">
 	</form>
-</p>
+</div>
 
-<p>${owner}</p>
+<div>${owner}</div>
 </body>
 </html>

@@ -6,28 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Input Products</title>
+<link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 <h1>Input Products</h1>
-<p>
+<div2>
 ${wrongProduct }
-</p>
-<p>
+</div2>
+<div>
 	<form name="customerHistory" action="customerhistory" method="post">
 	
-		<input type="submit" value="Customer History">
+		<input type="submit" class="inside" value="Customer History">
 	</form>
-</p>
-<p>
+</div>
+<div>
 	<form name="inputProducts" onsubmit="return validation()" action="inputproduct" method="post">
 
-		<br>Product Number: <input type="text" name="productNumber"> 
-		Quantity: <input type="text" name="quantity"> <br>
+		<br>Product Number: <input type="text" class="inside" name="productNumber"> 
+		Quantity: <input type="text" class="inside" name="quantity"> <br>
 		
-		<input type="submit" value="Add Product">
+		<input type="submit" class="inside" value="Add Product">
 	</form>
-</p>
-<p>
+</div>
+
 	<table align="center">
 		<tr>
 			<th>Product</th>
@@ -42,18 +43,17 @@ ${wrongProduct }
 			</tr>
 		</c:forEach>
 	</table>
-</p>
 
-<p>
+<div>
 	Total: ${total }
-</p>
+</div>
 
-<p>
+<div>
 	<form name="total" action="payment" method="post">
 
-		<input type="submit" value="Total">
+		<input type="submit" class="inside" value="Total">
 	</form>
-</p>
+</div>
 
 <script>
 	function validation() {
