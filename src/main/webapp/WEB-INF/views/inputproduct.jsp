@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,11 +30,14 @@ ${wrongProduct }
 	</form>
 </div>
 
+<!-- Need to figure out why the fmt is not working -->
+
 	<table align="center">
 		<tr>
 			<th>Product</th>
 			<th>Price</th>
 			<th>Quantity</th>
+			<th>Total</th>
 		</tr>
 		<c:forEach items="${products }" var="product" varStatus="status">
 			<tr>
@@ -42,11 +46,25 @@ ${wrongProduct }
 				<td>${quantities[status.index]}</td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td>Sub Total</td>
+			<td></td>
+			<td></td>
+			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${total }"/></td>
+		</tr>
+		<tr>
+			<td>Tax</td>
+			<td></td>
+			<td></td>
+			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${total * 0.06 }"/></td>
+		</tr>
+		<tr>
+			<td>Grand Total</td>
+			<td></td>
+			<td></td>
+			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${total * 1.06 }"/></td>
+		</tr>
 	</table>
-
-<div>
-	Total: ${total }
-</div>
 
 <div>
 	<form name="total" action="payment" method="post">
