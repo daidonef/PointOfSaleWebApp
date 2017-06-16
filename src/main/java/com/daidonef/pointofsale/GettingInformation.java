@@ -51,6 +51,18 @@ public class GettingInformation {
 		return BigDecimal.valueOf(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
 	}
 	
+	public static double tax (HttpSession session) {
+		
+		return BigDecimal.valueOf((Double)session.getAttribute("total") * 0.06).setScale(
+				2, RoundingMode.HALF_UP).doubleValue();
+	}
+	
+	public static double grandTotal (HttpSession session) {
+		
+		return BigDecimal.valueOf((Double)session.getAttribute("total") * 1.06).setScale(
+				2, RoundingMode.HALF_UP).doubleValue();
+	}
+	
 	//Gets employee by employee number.
 	public static Employee employee(HttpServletRequest request) {
 		
@@ -80,7 +92,7 @@ public class GettingInformation {
 	}
 	
 	//Gets the date from the webpage and formates it into the Date Class.
-	public static Date date(HttpServletRequest request) {
+	private static Date date(HttpServletRequest request) {
 		
 		String[] brokenDates = request.getParameter("date").split("/");
 		Date date = new Date(Integer.parseInt(brokenDates[2]) - 1900, Integer.parseInt(

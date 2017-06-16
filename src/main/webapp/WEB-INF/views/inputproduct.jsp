@@ -30,8 +30,6 @@ ${wrongProduct }
 	</form>
 </div>
 
-<!-- Need to figure out why the fmt is not working -->
-
 	<table align="center">
 		<tr>
 			<th>Product</th>
@@ -56,13 +54,13 @@ ${wrongProduct }
 			<td>Tax</td>
 			<td></td>
 			<td></td>
-			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${total * 0.06 }"/></td>
+			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${tax }"/></td>
 		</tr>
 		<tr>
 			<td>Grand Total</td>
 			<td></td>
 			<td></td>
-			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${total * 1.06 }"/></td>
+			<td><fmt:formatNumber type="number" minFractionDigits="2" value="${grandTotal }"/></td>
 		</tr>
 	</table>
 

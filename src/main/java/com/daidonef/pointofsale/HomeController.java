@@ -151,6 +151,8 @@ public class HomeController {
 			}
 		}
 		model.addAttribute("subTotal", session.getAttribute("total"));
+		model.addAttribute("tax", GettingInformation.tax(session));
+		model.addAttribute("grandTotal", GettingInformation.grandTotal(session));
 		
 		return "payment";
 	}

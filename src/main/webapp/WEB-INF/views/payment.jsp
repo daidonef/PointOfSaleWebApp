@@ -12,7 +12,9 @@
 
 <div2>${incorrectPayment }</div2>
 
-<div>Sub Total: ${subTotal }</div>
+<div>Sub Total: ${subTotal }
+<br>Tax: ${tax }
+<br>Grand Total: ${grandTotal }</div>
 
 <div>
 	<form name="paymentType" onsubmit="return payValidation()" action="payment" method="post">

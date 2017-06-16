@@ -61,13 +61,23 @@ public class SavingInformation {
 			quantity.add(quan);
 		}
 		
-		//Use session to store product and quantity list.
+		//Use session to store product and quantity list and displays totals and tax.
+		storeTotalInfo(model, session, products, quantity);
+	}
+	
+	//Use session to store product and quantity list and displays totals and tax.
+	private static void storeTotalInfo (Model model, HttpSession session, 
+			ArrayList<Product> products, ArrayList<Integer> quantity) {
+		
 		session.setAttribute("product", products);
 		session.setAttribute("quantity", quantity);
 		model.addAttribute("products", products);
 		model.addAttribute("quantities", quantity);
 		session.setAttribute("total", GettingInformation.total(products, quantity));
 		model.addAttribute("total", session.getAttribute("total"));
+		model.addAttribute("tax", GettingInformation.tax(session));
+		model.addAttribute("grandTotal", GettingInformation.grandTotal(session));
+		
 	}
 	
 	//Adds new product to database.
