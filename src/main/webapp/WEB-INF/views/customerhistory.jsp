@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,12 +59,35 @@
 				<td></td>
 				<td><fmt:formatNumber type="number" minFractionDigits="2" value="${history.grandTotal }"/></td>
 				<td>${history.paymentType }</td>
-				<td><fmt:formatNumber type="number" minFractionDigits="2" value="${history.cashPayment }"/></td>
-				<td><fmt:formatNumber type="number" minFractionDigits="2" value="${history.change }"/></td>
+				<td>
+					<c:if test="${history.cashPayment != 0 }">
+						<fmt:formatNumber type="number" minFractionDigits="2" value="${history.cashPayment }"/>
+					</c:if>
+				</td>
+				<td>
+					<c:if test="${history.change != 0 }">
+						<fmt:formatNumber type="number" minFractionDigits="2" value="${history.change }"/>
+					</c:if>
+				</td>
 				<td>${history.creditDate }</td>
-				<td>${history.creditCardNumber }</td>
-				<td>${history.securityCode }</td>
-				<td>${history.checkNumber }</td>
+				<td>
+					<c:if test="${history.creditCardNumber != 0 }">
+						<c:set var = "CCNumber" value = "${history.creditCardNumber }"/>
+      					<c:set var = "CCNumber" value = "${fn:substring(CCNumber, 12, 16)}" />
+      					<c:set var = "CCNumber" value = "****-****-****-${CCNumber }" />
+      					${CCNumber }
+					</c:if>
+				</td>
+				<td>
+					<c:if test="${history.securityCode != 0 }">
+						${history.securityCode }
+					</c:if>
+				</td>
+				<td>
+					<c:if test="${history.checkNumber != 0 }">
+						${history.checkNumber }
+					</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
