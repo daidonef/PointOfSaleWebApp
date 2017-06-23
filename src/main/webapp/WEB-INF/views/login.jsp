@@ -8,6 +8,13 @@
 <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
+
+<divnav>
+	<form name="home" class="navlogin" action="http://localhost:8080/pointofsale/" method="get">
+		<input type="submit" class="inside" value="Home">
+	</form>
+</divnav>
+
 <h1>Login</h1>
 
 <div2>${wrongLogin}</div2>

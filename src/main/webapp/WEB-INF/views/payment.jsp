@@ -8,6 +8,29 @@
 <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
+
+<divnav>
+	<form name="home" class="navproduct" action="http://localhost:8080/pointofsale/" method="get">
+		<input type="submit" class="inside" value="Home">
+	</form>
+	
+	<form name="login" class="navproduct" action="login" method="post">
+		<input type="submit" class="inside" value="Login">
+	</form>
+	
+	<form name="customerSearch" class="navproduct" action="searchcustomer" method="post">
+		<input type="submit" class="inside" value="Customer Search">
+	</form>
+	
+	<form name="customerHistory" class="navproduct" action="customerhistory" method="post">
+		<input type="submit" class="inside" value="Customer History">
+	</form>
+	
+	<form name="inputProduct" class="navproduct" action="inputproduct" method="post">
+		<input type="submit" class="inside" value="Input Product">
+	</form>
+</divnav>
+
 <h1>Payment</h1>
 
 <div2>${incorrectPayment }</div2>

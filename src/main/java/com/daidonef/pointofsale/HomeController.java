@@ -224,8 +224,9 @@ public class HomeController {
 				model.addAttribute("productExist", "Product is already in the system!");
 				return "ownerpage";
 			}
-			model.addAttribute("addedProduct", SavingInformation.addProductToData(request)
+			model.addAttribute("productAdded", SavingInformation.addProductToData(request)
 					.getProductName());
+			model.addAttribute("productAdded2", " product was added");
 			return "ownerpage";
 		}
 		
@@ -271,6 +272,7 @@ public class HomeController {
 			DAOEmployee.addEmployee(employee);
 			
 			model.addAttribute("employee", employee);
+			model.addAttribute("employee2", " employee added");
 		}
 		
 		return "ownerpage";

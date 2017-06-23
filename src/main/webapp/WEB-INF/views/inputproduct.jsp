@@ -10,6 +10,25 @@
 <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
+
+<divnav>
+	<form name="home" class="navprofile" action="http://localhost:8080/pointofsale/" method="get">
+		<input type="submit" class="inside" value="Home">
+	</form>
+	
+	<form name="login" class="navprofile" action="login" method="post">
+		<input type="submit" class="inside" value="Login">
+	</form>
+	
+	<form name="customerSearch" class="navprofile" action="searchcustomer" method="post">
+		<input type="submit" class="inside" value="Customer Search">
+	</form>
+	
+	<form name="customerHistory" class="navprofile" action="customerhistory" method="post">
+		<input type="submit" class="inside" value="Customer History">
+	</form>
+</divnav>
+
 <h1>Input Products</h1>
 <div2>
 ${wrongProduct }

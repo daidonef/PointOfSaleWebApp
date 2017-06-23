@@ -8,12 +8,31 @@
 <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
+
+<divnav>
+	<form name="home" class="navprofile" action="http://localhost:8080/pointofsale/" method="get">
+		<input type="submit" class="inside" value="Home">
+	</form>
+	
+	<form name="login" class="navprofile" action="login" method="post">
+		<input type="submit" class="inside" value="Login">
+	</form>
+	
+	<form name="customerSearch" class="navprofile" action="searchcustomer" method="post">
+		<input type="submit" class="inside" value="Customer Search">
+	</form>
+	
+	<form name="ownerPage" class="navprofile" action="ownerpage" method="post">
+		<input type="submit" class="inside" value="Owner Page">
+	</form>
+</divnav>
+
 <h1>Update Product</h1>
 
 <div>
 	<form name="updateProduct" onsubmit="return validation()" action="ownerpage" method="post">
 	
-		<input type="hidden" name="porductID" class="inside" value="${product.productID}">
+		<input type="hidden" name="productID" class="inside" value="${product.productID}">
 		<br>Product Name: <input type="text" name="productNameUp" class="inside" value="${product.productName}"> 
 		<br>Price: <input type="text" name="price" class="inside" value="${product.price}"> 
 		<br>Type: <input type="text" name="type" class="inside" value="${product.type }"> 

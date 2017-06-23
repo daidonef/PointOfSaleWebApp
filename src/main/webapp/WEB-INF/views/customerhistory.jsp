@@ -11,6 +11,25 @@
 <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
+
+<divnav>
+	<form name="home" class="navprofile" action="http://localhost:8080/pointofsale/" method="get">
+		<input type="submit" class="inside" value="Home">
+	</form>
+	
+	<form name="login" class="navprofile" action="login" method="post">
+		<input type="submit" class="inside" value="Login">
+	</form>
+	
+	<form name="customerSearch" class="navprofile" action="searchcustomer" method="post">
+		<input type="submit" class="inside" value="Customer Search">
+	</form>
+	
+	<form name="inputProduct" class="navprofile" action="inputproduct" method="post">
+		<input type="submit" class="inside" value="Input Product">
+	</form>
+</divnav>
+
 <h1>Customer History</h1>
 
 <!-- Need to clean up table so it looks and the double var have two decimal places -->
