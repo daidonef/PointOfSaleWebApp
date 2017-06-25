@@ -19,7 +19,8 @@ public class SavingInformation {
 		
 		Account account = new Account(request.getParameter("userName"), 
 				request.getParameter("firstName"), request.getParameter("lastName"), password, 
-				Long.parseLong(request.getParameter("phoneNumber")), 
+				Long.parseLong(GettingInformation.replacePhoneNumber(request.getParameter(
+						"phoneNumber"))), 
 				request.getParameter("email"));
 		
 		return account;
@@ -33,7 +34,8 @@ public class SavingInformation {
 		
 		Employee employee = new Employee(request.getParameter("userName"), 
 				request.getParameter("firstName"), request.getParameter("lastName"), password, 
-				Long.parseLong(request.getParameter("phoneNumber")), 
+				Long.parseLong(GettingInformation.replacePhoneNumber(request.getParameter(
+						"phoneNumber"))), 
 				request.getParameter("email"));
 		
 		return employee;
@@ -112,7 +114,8 @@ public class SavingInformation {
 		
 		Employee employee = new Employee(Integer.parseInt(request.getParameter("employeeID")), 
 				request.getParameter("userNameUp"), request.getParameter("firstName"), 
-				request.getParameter("lastName"), password, Long.parseLong(request.getParameter("phoneNumber")), 
+				request.getParameter("lastName"), password, Long.parseLong(
+						GettingInformation.replacePhoneNumber(request.getParameter("phoneNumber"))), 
 				request.getParameter("email"));
 		
 		DAOEmployee.updateEmployee(employee);

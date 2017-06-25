@@ -123,5 +123,10 @@ public class GettingInformation {
 		return DAOAHProducts.getAHProducts(Query.gettingAHProducts(
 				((Account)session.getAttribute("account")).getID()));
 	}
+	
+	public static String replacePhoneNumber(String phoneNumber) {
+		return phoneNumber.replace("(", "").replace(")", "").replace("-", "")
+				.replace("/", "");
+	}
 
 }
