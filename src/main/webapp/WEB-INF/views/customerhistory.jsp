@@ -53,7 +53,7 @@
 		</tr>
 		<c:forEach items="${customerHistory }" var="history">
 			<tr>
-				<td>${history.date }</td>
+				<td><fmt:formatDate pattern = "MM-dd-yyyy" value = "${history.date }" /></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -88,7 +88,7 @@
 						<fmt:formatNumber type="number" minFractionDigits="2" value="${history.change }"/>
 					</c:if>
 				</td>
-				<td>${history.creditDate }</td>
+				<td><fmt:formatDate pattern = "MM-dd-yyyy" value = "${history.creditDate }" /></td>
 				<td>
 					<c:if test="${history.creditCardNumber != 0 }">
 						<c:set var = "CCNumber" value = "${history.creditCardNumber }"/>

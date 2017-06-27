@@ -101,6 +101,16 @@ ${wrongProduct }
 			return false;
 		}
 		
+		if (productNumber === "") {
+			alert("Please input Product Number!");
+			return false;
+		}
+		
+		if (quantity === "") {
+			alert("Please input quantity!");
+			return false;
+		}
+		
 		if (/\D/.test(quantity)) {
 			alert("Quantity needs to be a number!");
 			return false;
