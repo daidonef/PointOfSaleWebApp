@@ -27,7 +27,7 @@
 <div>
 	<form name="customerSearch" action="inputproduct" method="post">
 
-		<br> <input type="text" class="inside" name="search"> <br>
+		<br> <input type="search" class="inside" name="search" placeholder="search"> <br>
 		
 		<input type="submit" class="inside" value="Search Customer">
 	</form>

@@ -39,7 +39,8 @@ ${productDeleted.productName }${productDeleted2 }</div>
 <div>
 	<form name ="searchProduct" action="ownerpage" method="post">
 		
-		<br>Search Product: <input type="text" class="inside" name="searchProduct">
+		<br>Search Product: <input type="search" class="inside" name="searchProduct"
+		placeholder="Search">
 		
 		<input type="submit" class="inside" value="Search Product">
 	</form>
